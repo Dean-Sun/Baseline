@@ -8,7 +8,7 @@ source('code/plott.R')
 
 data = read_csv('data/csv_cut/data_val.csv')
 # start h2o session 
-h2o.init(nthreads=-1, max_mem_size="10G")
+h2o.init(nthreads=-1, max_mem_size="56G")
 train = h2o.importFile(path = 'data/csv_cut/data_train.csv')
 valid = h2o.importFile(path = 'data/csv_cut/data_val.csv')
 # set X and y 
