@@ -46,8 +46,28 @@ plotPred = function(data, group = 'GroupA', model = 'baseline', samples = 1000){
 
 
 
+############# performence check ##################
 
+# performance check 
+summary(model_rf)
+h2o.varimp(model_rf)
+h2o.performance(model_rf, newdata=train)    ## full training data
+h2o.performance(model_rf, newdata=valid)    ## full validation data
 
+metrics(h2o.predict(model_rf, train), train[y_norm])
+valid['y_pred_rf'] = h2o.predict(model_rf, valid)
+metrics(valid['y_pred_rf'], valid[y_norm])
+
+# scale back check
+metrics(unscale(h2o.predict(model_rf, train),
+                mean = mean(train[y_true]),
+                sd = sd(train[y_true])),
+        train[y_true])
+valid['y_pred_rf'] = unscale(h2o.predict(model_rf, valid),
+                             mean = mean(train[y_true]),
+                             sd = sd(train[y_true]))
+
+metrics(valid['y_pred_rf'], valid[y_true])
 
 
 

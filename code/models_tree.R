@@ -7,16 +7,27 @@ source('code/tools.R')
 source('code/plott.R')
 
 # start h2o session 
-h2o.init(nthreads=-1, max_mem_size="56G")
+h2o.init(nthreads=-1, max_mem_size="12G")
 train = h2o.importFile(path = 'data/csv_cut/data_train.csv')
 valid = h2o.importFile(path = 'data/csv_cut/data_val.csv')
 
 #####################################
-### try for delete some outliers ####
+########## Scale the Label ##########
 #####################################
+train['TrueAnswer_norm'] = my_scale(train['TrueAnswer'])
+valid['TrueAnswer_norm'] = my_scale(valid['TrueAnswer'], 
+                                    mean = mean(train['TrueAnswer']),
+                                    sd = sd(train['TrueAnswer']))
+
+# log the label
+train['TrueAnswer_log'] = log(train['TrueAnswer'])
+valid['TrueAnswer_log'] = log(valid['TrueAnswer'])
+
 
 # set X and y 
-y <- "TrueAnswer"
+y_true = 'TrueAnswer'
+y_norm <- "TrueAnswer_norm"
+y_log = 'TrueAnswer_log'
 X = names(train)[c(3, 10:59, 63)]
 
 
@@ -25,36 +36,41 @@ X = names(train)[c(3, 10:59, 63)]
 ######################## Random Forest ###########################
 ##################################################################
 
-model_rf <- h2o.randomForest(
-  model_id="model_rf", 
+model_rf_log <- h2o.randomForest(
+  model_id="model_rf_log", 
   training_frame=train, 
   validation_frame=valid,  
-  y=y,
+  y=y_log,
   x=X,
   ntrees = 150,
-  max_depth = 25,
+  max_depth = 20,
   min_rows = 1,
   stopping_rounds = 5,
   stopping_metric = 'MSE',
-  stopping_tolerance = 0.01
+  stopping_tolerance = 0.001
   
   
 )
 
 # performance check 
-summary(model_rf)
-h2o.varimp(model_rf)
-h2o.performance(model_rf, newdata=train)    ## full training data
-h2o.performance(model_rf, newdata=valid)    ## full validation data
+summary(model_rf_log)
+performance(h2o.predict(model_rf_log, train), train[y_true], type = 'log')
+performance(h2o.predict(model_rf_log, valid), valid[y_true], type = 'log')
 
-metrics(h2o.predict(model_rf, train), train[y])
-valid['y_pred_rf'] = h2o.predict(model_rf, valid)
-metrics(valid['y_pred_rf'], valid[y])
+
+
+
+
 
 # Plot
 #valid_dt$y_pred_rf = as.data.table(valid$y_pred_rf)
+valid['y_pred_rf'] = exp(h2o.predict(model_rf_log, valid))
 valid_dt = as.data.table(valid)
-plotPred(valid_dt, group = 'GroupF-196', model = 'rf', activity = TRUE)
+plotPred(valid_dt, group = 'GroupF-181', model = 'rf', activity = FALSE)
+
+
+
+
 
 
 # Tuning the parameters
@@ -193,16 +209,16 @@ grid_gbm
 ##################################################################
 
 model_xgb <- h2o.xgboost(model_id="model_xgb", 
-                    training_frame=train, 
-                    validation_frame=valid,
-                    x = X, 
-                    y = y,
-                    ntrees = 50,
-                    max_depth = 7,
-                    stopping_rounds = 3,
-                    stopping_metric = 'MSE',
-                    stopping_tolerance = 0.01,
-                    verbose = TRUE)
+                         training_frame=train, 
+                         validation_frame=valid,
+                         x = X, 
+                         y = y,
+                         ntrees = 50,
+                         max_depth = 7,
+                         stopping_rounds = 3,
+                         stopping_metric = 'MSE',
+                         stopping_tolerance = 0.01,
+                         verbose = TRUE)
 # performance check 
 summary(model_xgb)
 
@@ -281,11 +297,12 @@ plotPred(valid_dt, group = 'Group-199', model = 'xgb', activity = FALSE)
 
 
 # Save the model
-path <- h2o.saveModel(model_rf, 
+path <- h2o.saveModel(model_rf_log, 
                       path="models", force=TRUE)
-model_rf <- h2o.loadModel('models/model_rf')
+model <- h2o.loadModel('models/model_rf')
 summary(model)
-
+valid['y_pred'] = h2o.predict(model, valid)
+metrics(valid['y_pred'], valid[y_true])
 
 
 

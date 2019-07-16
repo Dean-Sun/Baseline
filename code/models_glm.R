@@ -7,7 +7,7 @@ source('code/tools.R')
 source('code/plott.R')
 
 # start h2o session 
-h2o.init(nthreads=-1, max_mem_size="56G")
+h2o.init(nthreads=-1, max_mem_size="16G")
 train = h2o.importFile(path = 'data/csv_cut/data_train.csv')
 valid = h2o.importFile(path = 'data/csv_cut/data_val.csv')
 dim(train)
@@ -15,14 +15,18 @@ names(train)
 h2o.describe(train)
 
 
-train['TrueAnswer_log'] = log(train['TrueAnswer'])
-train['TrueAnswer_inv'] = (train['TrueAnswer'])^-1
-valid['TrueAnswer_log'] = log(valid['TrueAnswer'])
-valid['TrueAnswer_inv'] = (valid['TrueAnswer'])^-1
+#train['TrueAnswer_log'] = log(train['TrueAnswer'])
+#train['TrueAnswer_inv'] = (train['TrueAnswer'])^-1
+#valid['TrueAnswer_log'] = log(valid['TrueAnswer'])
+#valid['TrueAnswer_inv'] = (valid['TrueAnswer'])^-1
 
+train['TrueAnswer_norm'] = my_scale(train['TrueAnswer'])
+valid['TrueAnswer_norm'] = my_scale(valid['TrueAnswer'], 
+                                    mean = mean(train['TrueAnswer']),
+                                    sd = sd(train['TrueAnswer']))
 
 # set X and y 
-y <- "TrueAnswer"
+y <- "TrueAnswer_norm"
 y_log = "TrueAnswer_log"
 y_inv = 'TrueAnswer_inv'
 X = names(train)[c(3, 10:59, 63)]
@@ -46,9 +50,25 @@ h2o.varimp(model_baseline)
 h2o.performance(model_baseline, newdata=train)    ## full training data
 h2o.performance(model_baseline, newdata=valid)    ## full validation data
 
+# normal check
 metrics(h2o.predict(model_baseline, train), train[y])
+# scale back 
+metrics(unscale(h2o.predict(model_baseline, train),
+                mean = mean(train['TrueAnswer']),
+                sd = sd(train['TrueAnswer'])), train['TrueAnswer'])
+
+
+
 valid['y_pred_baseline'] = h2o.predict(model_baseline, valid)
 metrics(valid['y_pred_baseline'], valid[y])
+
+# scale back 
+valid['y_pred_baseline'] = unscale(h2o.predict(model_baseline, valid),
+                                   mean = mean(train['TrueAnswer']),
+                                   sd = sd(train['TrueAnswer']))
+metrics(valid['y_pred_baseline'], valid['TrueAnswer'])
+
+
 
 valid_dt = as.data.table(valid)
 
@@ -157,7 +177,7 @@ plotPred(valid_dt, group = 'GroupA', model = 'poisson_Inv')
 ##################################################################
 
 valid['y_pred_baseline_adjust'] = ifelse(valid['y_pred_baseline']>0, 
-                                  valid['y_pred_baseline'], 0)
+                                         valid['y_pred_baseline'], 0)
 
 valid_dt$y_pred_baseline_adjust = as.data.table(valid$y_pred_baseline_adjust)
 plotPred(valid_dt, group = 'GroupA-170', model = 'baseline_adjust', activity = FALSE)

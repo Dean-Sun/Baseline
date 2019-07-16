@@ -28,17 +28,29 @@ metrics = function (y_pred, y_true){
 }
 
 
+unscale = function(x, mean, sd){
+  return(x*sd+mean)
+}
+
+my_scale = function(x, mean = NULL, sd = NULL){
+  if (is.null(mean) && is.null(sd)){
+    return((x-mean(x))/sd(x))
+  }else{
+    return((x-mean)/sd)
+  }
+  
+}
 
 
-
-
-
-
-
-
-
-
-
+performance = function(y_pred, y, type=NULL, mean = NULL, sd = NULL){
+  if(is.null(type)){
+    return(metrics(y_pred, y))
+  }else if(type == 'norm'){
+    return(metrics(unscale(y_pred, mean, sd), y))
+  }else if(type == 'log'){
+    return(metrics(exp(y_pred), y))
+  }
+}
 
 
 
