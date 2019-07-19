@@ -7,7 +7,7 @@ source('code/tools.R')
 source('code/plott.R')
 
 # start h2o session 
-h2o.init(nthreads=-1, max_mem_size="12G")
+h2o.init(nthreads=-1, max_mem_size="58G")
 train = h2o.importFile(path = 'data/csv_cut/data_train.csv')
 valid = h2o.importFile(path = 'data/csv_cut/data_val.csv')
 
@@ -156,7 +156,7 @@ search_criteria = list(
   ## early stopping once the leaderboard of the top 5 models is converged to 0.1% relative difference
   stopping_rounds = 3,
   stopping_metric = "MSE",
-  stopping_tolerance = 0.05
+  stopping_tolerance = 0.01
 )
 
 grid_gbm <- h2o.grid(
@@ -170,7 +170,7 @@ grid_gbm <- h2o.grid(
   grid_id = "grid_gbm",
   ## standard model parameters
   x = X,
-  y = y,
+  y = y_true,
   training_frame = train,
   validation_frame = valid,
   ## more trees is better if the learning rate is small enough
@@ -185,23 +185,23 @@ grid_gbm <- h2o.grid(
   ## early stopping based on timeout (no model should take more than 1 hour - modify as needed)
   max_runtime_secs = 3600,
   ## early stopping once the validation AUC doesn't improve by at least 0.01% for 5 consecutive scoring events
-  stopping_rounds = 3, stopping_tolerance = 0.05, stopping_metric = "MSE",
+  stopping_rounds = 3, stopping_tolerance = 0.01, stopping_metric = "MSE",
   ## score every 10 trees to make early stopping reproducible (it depends on the scoring interval)
   score_tree_interval = 10,
-  score_validation_samples=10000,
+  #score_validation_samples=10000,
   ## base random number generator seed for each model (automatically gets incremented internally for each model)
   seed = 1234
 )
 
 
 ## Sort the grid models by AUC
-grid_gbm <- h2o.getGrid("final_grid", sort_by = "auc", decreasing = TRUE)
+grid_gbm <- h2o.getGrid("grid_gbm", sort_by = "m", decreasing = TRUE)
 grid_gbm
 
 
 
 
-
+h2o.getGrid("grid_gbm", sort_by = "mae", decreasing = TRUE)
 
 
 ##################################################################
@@ -299,11 +299,18 @@ plotPred(valid_dt, group = 'Group-199', model = 'xgb', activity = FALSE)
 # Save the model
 path <- h2o.saveModel(model_rf_log, 
                       path="models", force=TRUE)
-model <- h2o.loadModel('models/model_rf')
+model <- h2o.loadModel('models_server/model_rf')
 summary(model)
-valid['y_pred'] = h2o.predict(model, valid)
-metrics(valid['y_pred'], valid[y_true])
+test_h2o = as.h2o(test%>%mutate_at(.vars = 'TIMESTAMP', .funs = as.character))
+valid_h2o = h2o.importFile(path = 'data/csv_cut/data_val.csv')
 
+
+valid_h2o['y_pred'] = h2o.predict(model, valid_h2o)
+test_h2o['y_pred'] = h2o.predict(model, test_h2o)
+
+
+metrics(valid_h2o['y_pred'], valid_h2o['TrueAnswer'])
+metrics(test_h2o['y_pred'], test_h2o['TrueAnswer'])
 
 
 

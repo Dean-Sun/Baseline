@@ -22,11 +22,13 @@ model_deep_1 <- h2o.deeplearning(
   validation_frame=valid,
   x=X,
   y=y,
-  hidden=c(5,3),
+  hidden=c(16,16),
   variable_importances=T,
+  l1 = 0,
+  l2 = 0.01,
   epochs=1000000,                      ## hopefully converges earlier...
   score_validation_samples=10000,      ## sample the validation dataset (faster)
-  stopping_rounds=15,
+  stopping_rounds=10,
   stopping_metric="MSE", ## could be "MSE","logloss","r2"
   stopping_tolerance=0.001,
   verbose = TRUE

@@ -23,7 +23,8 @@ metrics = function (y_pred, y_true){
   table = data.table(MSE = MSE(y_pred, y_true),
                      RMSE = RMSE(y_pred, y_true),
                      MAE = MAE(y_pred, y_true),
-                     MAPE = MAPE(y_pred, y_true))
+                     MAPE = MAPE(y_pred, y_true),
+                     WLS = sum((1/y_true)*(y_true-y_pred)^2))
   return(table)
 }
 

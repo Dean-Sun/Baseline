@@ -111,9 +111,14 @@ col_names <- c("TIMESTAMP", "TrueAnswer", "Activity", "Lift", "Imp", "CNET",
                "RollAvg5", "RollAvg10", "RollAvg25", "RollAvg50", "RollAvg75",
                "RollAvg100", "RollAvg150", "RollAvg200", "RollAvg250", "RollAvg300",
                "CME1", "CME2", "CME3", "CME_Group", "FileGrp")
-test_files <- list.files("./data/fst_test", pattern="test", recursive = TRUE, full.names = TRUE)
-test <- rbindlist(lapply(test_files, function(x) read_fst(x, columns=col_names,as.data.table = TRUE, from=1, to=10000)), fill=TRUE)
+
+
+test_files <- list.files("../Baseline_Data", pattern="test", recursive = TRUE, full.names = TRUE)
+test <- rbindlist(lapply(test_files, function(x) read_fst(x,as.data.table = TRUE, from=1, to=100000)), fill=TRUE)
 test
+
+
+
 
 test = bind_rows(read_fst('data/fst_test/GroupA_test_dat.fst', from = 1, to = 10000),
                  read_fst('data/fst_test/GroupB_test_dat.fst', from = 1, to = 10000),
