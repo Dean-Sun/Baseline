@@ -1,6 +1,6 @@
 library(tidyverse)
 library(data.table)
-library(keras)
+library(xgboost)
 library(caret)
 source('code/tools.R')
 source('code/plott.R')
@@ -56,47 +56,33 @@ train = train%>%select(-c(10:59))
 valid = valid%>%select(-c(10:59))
 
 
-#####################################################################
-###################### modeling ####################################
-####################################################################
-
-model <- keras_model_sequential() %>%
-  layer_dense(units = 16, activation = "relu",
-              input_shape = dim(train_X)[2]) %>%
-  layer_dense(units = 16, activation = "relu") %>%
-  layer_dense(units = 16, activation = "relu") %>%
-  layer_dense(units = 1)
-
-model %>% compile(
-  loss = "mse",
-  optimizer = optimizer_rmsprop(),
-  metrics = list("mse",'mae')
-)
-
-model%>%summary()
 
 
-model %>% fit(
-  train_X,
-  train$TrueAnswer,
-  batch_size = 64,
-  epochs = 12,
-  #sample_weight = 1/train$TrueAnswer,
-  validation_data = list(valid_X, valid$TrueAnswer),
-  verbose = 1
-)
 
 
-model%>%evaluate(valid_X, valid$TrueAnswer)
+#############################################################
+###################### Model ################################
+#############################################################
 
-valid['y_pred_deep'] = predict(model, valid_X)
 
 
-metrics(valid$y_pred_deep, valid$TrueAnswer)
+xgb = xgboost(data = train_X,
+              label = train$TrueAnswer,
+              max.depth = 12,
+              eta = 0.4,
+              nthread = -1,
+              nrounds = 150,
+              verbose = 1)
+
+
+
+
+valid['y_pred_xgb'] = predict(xgb, valid_X)
+
+
+metrics(valid$y_pred_xgb, valid$TrueAnswer)
 
 plotPred(valid, group = 'GroupI-182', model = 'deep', activity = TRUE)
-
-
 
 
 

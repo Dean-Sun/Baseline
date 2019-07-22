@@ -201,8 +201,6 @@ grid_gbm
 
 
 
-h2o.getGrid("grid_gbm", sort_by = "mae", decreasing = TRUE)
-
 
 ##################################################################
 ####################### XGBoost ##################################
@@ -212,9 +210,9 @@ model_xgb <- h2o.xgboost(model_id="model_xgb",
                          training_frame=train, 
                          validation_frame=valid,
                          x = X, 
-                         y = y,
-                         ntrees = 50,
-                         max_depth = 7,
+                         y = y_true,
+                         ntrees = 100,
+                         max_depth = 13,
                          stopping_rounds = 3,
                          stopping_metric = 'MSE',
                          stopping_tolerance = 0.01,
@@ -222,9 +220,9 @@ model_xgb <- h2o.xgboost(model_id="model_xgb",
 # performance check 
 summary(model_xgb)
 
-metrics(h2o.predict(model_xgb, train), train[y])
+metrics(h2o.predict(model_xgb, train), train[y_true])
 valid['y_pred_xgb'] = h2o.predict(model_xgb, valid)
-metrics(valid['y_pred_xgb'], valid[y])
+metrics(valid['y_pred_xgb'], valid[y_true])
 
 valid_dt$y_pred_xgb = as.data.table(valid$y_pred_xgb)
 plotPred(valid_dt, group = 'Group-199', model = 'xgb', activity = FALSE)
@@ -305,11 +303,11 @@ test_h2o = as.h2o(test%>%mutate_at(.vars = 'TIMESTAMP', .funs = as.character))
 valid_h2o = h2o.importFile(path = 'data/csv_cut/data_val.csv')
 
 
-valid_h2o['y_pred'] = h2o.predict(model, valid_h2o)
+valid['y_pred'] = h2o.predict(model, valid)
 test_h2o['y_pred'] = h2o.predict(model, test_h2o)
 
 
-metrics(valid_h2o['y_pred'], valid_h2o['TrueAnswer'])
+metrics(valid['y_pred'], valid['TrueAnswer'])
 metrics(test_h2o['y_pred'], test_h2o['TrueAnswer'])
 
 

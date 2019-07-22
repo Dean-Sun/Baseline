@@ -7,7 +7,7 @@ source('code/tools.R')
 source('code/plott.R')
 
 # start h2o session 
-h2o.init(nthreads=-1, max_mem_size="58G")
+h2o.init(nthreads=-1, max_mem_size="57G")
 train = h2o.importFile(path = 'data/csv_cut/data_train.csv')
 valid = h2o.importFile(path = 'data/csv_cut/data_val.csv')
 # set X and y 
@@ -21,8 +21,9 @@ auto = h2o.automl(
   x=X,
   y=y,
   max_runtime_secs = 129600,
-  nfolds = 3,
-  stopping_metric = 'MSE',
+  nfolds = 2,
+  exclude_algos = c('GLM'),
+  stopping_metric = 'MSE', 
   stopping_rounds = 10,
   stopping_tolerance = 0.001,
   seed = 123,
