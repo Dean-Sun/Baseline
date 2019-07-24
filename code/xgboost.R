@@ -57,32 +57,76 @@ valid = valid%>%select(-c(10:59))
 
 
 
-
+Dtrain = xgb.DMatrix(data = train_X, label = train$TrueAnswer )
 
 
 #############################################################
 ###################### Model ################################
 #############################################################
 
-
-
-xgb = xgboost(data = train_X,
-              label = train$TrueAnswer,
-              max.depth = 12,
-              eta = 0.4,
+xgb = xgb.train(data = Dtrain,
+              max.depth = 10,
+              eta = 0.05,
               nthread = -1,
-              nrounds = 150,
-              verbose = 1)
+              nrounds = 100,
+              verbosity = 2,
+              objective = wls
+              )
 
 
 
-
-valid['y_pred_xgb'] = predict(xgb, valid_X)
+valid['y_pred_xgb'] = (predict(xgb, valid_X))
 
 
 metrics(valid$y_pred_xgb, valid$TrueAnswer)
 
-plotPred(valid, group = 'GroupI-182', model = 'deep', activity = TRUE)
+plotPred(valid, group = 'GroupC-182', model = 'xgb', activity = FALSE)
+
+
+
+#################################################################################
+########################## Custom Loss ##########################################
+#################################################################################
+
+## Squared Log Error (SLE)
+sle = function(pred, dtrain){
+  label = getinfo(dtrain, 'label')
+  grad = (log(pred+1)-log(label+1))/(pred+1)
+  hess = (1-log(pred+1)+log(label+1))/(pred+1)^2
+  return(list(grad = grad, hess = hess))
+}
+
+
+
+
+## Weighted least square 
+wls = function(pred, dtrain){
+  label = getinfo(dtrain, 'label')
+  grad = (2/label)*(pred-label)
+  hess = (2/label)
+  return(list(rad = grad, hess = hess))
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
