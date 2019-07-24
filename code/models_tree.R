@@ -75,8 +75,8 @@ plotPred(valid_dt, group = 'GroupF-181', model = 'rf', activity = FALSE)
 
 # Tuning the parameters
 hyper_params = list(
-  ntrees = c(50,100,150,200,300),
-  max_depth = c(7,10,15,17,20,23,26)
+  ntrees = c(100,150,200,300),
+  max_depth = c(5,7,10,15,17,20,25,30)
 )
 
 grid_rf <- h2o.grid(

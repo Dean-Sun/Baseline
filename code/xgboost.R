@@ -104,8 +104,60 @@ wls = function(pred, dtrain){
   label = getinfo(dtrain, 'label')
   grad = (2/label)*(pred-label)
   hess = (2/label)
-  return(list(rad = grad, hess = hess))
+  return(list(grad = grad, hess = hess))
 }
+
+
+
+############################################################################
+################## Parameter Tuning for XGboost ############################
+############################################################################
+
+# train control
+fitControl <- trainControl(method = "cv",
+                           number = 3,
+                           verboseIter = TRUE,
+                           search = 'random')
+
+# Cross Validation and Grid search for XGboost
+xgbGrid <- expand.grid(
+  nrounds = c(100,200,300,400),
+  max_depth = c(4,6,8,10,12,14),
+  eta = c(0.01,0.03,0.05, 0.07,0.1,0.3,0.5),
+  gamma = c(0.01,0.03,0.06,0.08),
+  colsample_bytree = c(0.5,0.75,1),
+  subsample = c(0.5,0.7,1),
+  min_child_weight = c(0,1)
+)
+
+classifier_xgb <- train(
+  x = train_X,
+  y = train$TrueAnswer,
+  method = "xgbTree",
+  objective = wls,
+  metric = 'MAE',
+  trControl = fitControl,
+  tuneLength = 20
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
