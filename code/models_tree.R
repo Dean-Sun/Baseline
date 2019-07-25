@@ -42,8 +42,8 @@ model_rf_log <- h2o.randomForest(
   validation_frame=valid,  
   y=y_log,
   x=X,
-  ntrees = 150,
-  max_depth = 20,
+  ntrees = 300,
+  max_depth = 17,
   min_rows = 1,
   stopping_rounds = 5,
   stopping_metric = 'MSE',
@@ -87,7 +87,7 @@ grid_rf <- h2o.grid(
   grid_id = "grid_rf",
   ## standard model parameters
   x = X,
-  y = y,
+  y = y_true,
   training_frame = train,
   validation_frame = valid,
   ## early stopping once the validation AUC doesn't improve by at least 0.01% for 5 consecutive scoring events
@@ -106,7 +106,7 @@ model_gbm <- h2o.gbm(model_id="model_gbm",
                      training_frame=train, 
                      validation_frame=valid,
                      x = X, 
-                     y = y,
+                     y = y_true,
                      ntrees = 100,
                      max_depth = 10)
 # performance check 

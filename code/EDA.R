@@ -97,20 +97,6 @@ temp = data%>%
 #################### get test data ###################
 library(data.table)
 library(fst)
-col_names <- c("TIMESTAMP", "TrueAnswer", "Activity", "Lift", "Imp", "CNET",
-               "Date", "Baseline", "Simulation_ID", "BL_25_TOP_10_1", "BL_25_TOP_20_1",
-               "BL_25_TOP_25_1", "BL_50_TOP_5_1", "BL_50_TOP_10_1", "BL_50_TOP_20_1",
-               "BL_50_TOP_25_1", "BL_50_TOP_35_1", "BL_75_TOP_5_1", "BL_125_TOP_5_1",
-               "BL_25_TOP_10_2", "BL_25_TOP_20_2", "BL_25_TOP_25_2", "BL_50_TOP_5_2",
-               "BL_50_TOP_10_2", "BL_50_TOP_20_2", "BL_50_TOP_25_2", "BL_50_TOP_35_2",
-               "BL_75_TOP_5_2", "BL_125_TOP_5_2", "BL_25_TOP_10_3", "BL_25_TOP_20_3", 
-               "BL_25_TOP_25_3", "BL_50_TOP_5_3", "BL_50_TOP_10_3", "BL_50_TOP_20_3",
-               "BL_50_TOP_25_3", "BL_50_TOP_35_3", "BL_75_TOP_5_3", "BL_125_TOP_5_3", 
-               "PercentZero", "ZeroRoll5", "ZeroRoll10", "ZeroRoll25", "ZeroRoll35", 
-               "ZeroRoll50", "ZeroRoll80", "ZeroRoll100", "ZeroRoll200", "ZeroRoll300", 
-               "RollAvg5", "RollAvg10", "RollAvg25", "RollAvg50", "RollAvg75",
-               "RollAvg100", "RollAvg150", "RollAvg200", "RollAvg250", "RollAvg300",
-               "CME1", "CME2", "CME3", "CME_Group", "FileGrp")
 
 
 test_files <- list.files("../Baseline_Data", pattern="test", recursive = TRUE, full.names = TRUE)
@@ -118,19 +104,54 @@ test <- rbindlist(lapply(test_files, function(x) read_fst(x,as.data.table = TRUE
 test
 
 
+########## groups 1440000, 720000
+
+data = read_fst('../Baseline_Data/GroupI_train_dat.fst', as.data.table = TRUE)
+train = truncation(data, split_rate = 0.7, both = TRUE)[[1]]
+valid = truncation(data, split_rate = 0.7, both = TRUE)[[2]]
+
+rm(data)
+train = train[1:1440000,]
+valid = valid[1:720000,]
+
+train['id'] = paste0(train$CME_Group, '-', as.character(train$FileGrp))
+valid['id'] = paste0(valid$CME_Group, '-', as.character(valid$FileGrp))
+
+write_csv(train, 'data/group_i/train.csv')
+write_csv(valid, 'data/group_i/valid.csv')
 
 
-test = bind_rows(read_fst('data/fst_test/GroupA_test_dat.fst', from = 1, to = 10000),
-                 read_fst('data/fst_test/GroupB_test_dat.fst', from = 1, to = 10000),
-                 read_fst('data/fst_test/GroupC_test_dat.fst', from = 1, to = 10000),
-                 read_fst('data/fst_test/GroupD_test_dat.fst', from = 1, to = 10000),
-                 read_fst('data/fst_test/GroupE_test_dat.fst', from = 1, to = 10000),
-                 read_fst('data/fst_test/GroupF_test_dat.fst', from = 1, to = 10000),
-                 read_fst('data/fst_test/GroupG_test_dat.fst', from = 1, to = 10000),
-                 read_fst('data/fst_test/GroupH_test_dat.fst', from = 1, to = 10000),
-                 read_fst('data/fst_test/GroupI_test_dat.fst', from = 1, to = 10000))
 
 
+#### plot different group
+
+
+
+data = read_csv('data/group_a/train.csv')
+data%>%
+  filter(FileGrp==1)%>%
+  select(TIMESTAMP, TrueAnswer, BL_25_TOP_25_2, BL_50_TOP_25_2, BL_125_TOP_5_2)%>%
+  as.data.table()%>%
+  dygraph()%>%
+  dyRangeSelector()%>%
+  dyOptions(useDataTimezone = TRUE)
+
+data%>%
+  filter(FileGrp==1)%>%
+  select(TIMESTAMP, TrueAnswer, ZeroRoll10, ZeroRoll100, ZeroRoll25)%>%
+  as.data.table()%>%
+  dygraph()%>%
+  dyRangeSelector()%>%
+  dyOptions(useDataTimezone = TRUE)
+
+data2 = read_csv('data/group_i/train.csv')
+data2%>%
+  filter(FileGrp==1)%>%
+  select(TIMESTAMP, TrueAnswer, BL_25_TOP_25_2, BL_50_TOP_25_2, BL_125_TOP_5_2)%>%
+  as.data.table()%>%
+  dygraph()%>%
+  dyRangeSelector()%>%
+  dyOptions(useDataTimezone = TRUE)
 
 
 
