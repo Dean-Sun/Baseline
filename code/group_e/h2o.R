@@ -6,8 +6,8 @@ source('code/plott.R')
 
 # start h2o session 
 h2o.init(nthreads=-1, max_mem_size="58G")
-train = h2o.importFile(path = 'data/group_i/train.csv')
-valid = h2o.importFile(path = 'data/group_i/valid.csv')
+train = h2o.importFile(path = 'data/group_e/train.csv')
+valid = h2o.importFile(path = 'data/group_e/valid.csv')
 
 # log the label
 train['TrueAnswer_log'] = log(train['TrueAnswer'])
@@ -45,7 +45,7 @@ valid['y_pred_rf'] = h2o.predict(model_rf, valid)
 metrics(valid['y_pred_rf'], valid[y_true])
 # plot
 valid_dt = as.data.table(valid)
-plotPred(valid_dt, group = 'GroupI-3000', model = 'rf', activity = FALSE)
+plotPred(valid_dt, group = 'GroupE-4446', model = 'rf', activity = FALSE)
 
 
 # Tuning the parameters
@@ -103,7 +103,7 @@ model_deep <- h2o.deeplearning(
   validation_frame=valid,
   x=X,
   y=y_true,
-  hidden=c(64,64),
+  hidden=c(64,64,64),
   variable_importances=T,
   epochs=1000000,                      ## hopefully converges earlier...
   score_validation_samples=10000,      ## sample the validation dataset (faster)

@@ -197,4 +197,7 @@ LESSOPEN=| /usr/bin/lesspipe %s
 _=/usr/bin/env
 1F8F2B3A
 ]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ ^C
-]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ free -m[K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ 
+free -m
+              total        used        free      shared  buff/cache   available
+Mem:          64401         460       58594           0        5345       63274
+Swap:             0           0           0
