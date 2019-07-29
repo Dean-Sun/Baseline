@@ -106,7 +106,7 @@ test
 
 ########## groups 1440000, 720000
 
-data = read_fst('../Baseline_Data/GroupE_train_dat.fst', as.data.table = TRUE)
+data = read_fst('../Baseline_Data/GroupI_train_dat.fst', as.data.table = TRUE)
 train = truncation(data, split_rate = 0.7, both = TRUE)[[1]]
 valid = truncation(data, split_rate = 0.7, both = TRUE)[[2]]
 
@@ -117,8 +117,24 @@ valid = valid[1:720000,]
 train['id'] = paste0(train$CME_Group, '-', as.character(train$FileGrp))
 valid['id'] = paste0(valid$CME_Group, '-', as.character(valid$FileGrp))
 
-write_csv(train, 'data/group_e/train.csv')
-write_csv(valid, 'data/group_e/valid.csv')
+write_csv(train, 'data/group_i/train.csv')
+write_csv(valid, 'data/group_i/valid.csv')
+
+####### Combine group D-I 
+
+train_files = list.files("../Baseline_Data", pattern="train", recursive = TRUE, full.names = TRUE)[4:9]
+valid_files <- list.files("../Baseline_Data", pattern="test", recursive = TRUE, full.names = TRUE)[4:9]
+
+
+train = rbindlist(lapply(train_files, function(x) read_fst(x,as.data.table = TRUE, from=1, to=288000)), fill=TRUE)
+valid = rbindlist(lapply(valid_files, function(x) read_fst(x,as.data.table = TRUE, from=1, to=144000)), fill=TRUE)
+
+train$id = paste0(train$CME_Group, '-', as.character(train$FileGrp))
+valid$id = paste0(valid$CME_Group, '-', as.character(valid$FileGrp))
+
+write_csv(train, 'data/group_d_to_i/train.csv')
+write_csv(valid, 'data/group_d_to_i/valid.csv')
+
 
 
 
@@ -127,9 +143,9 @@ write_csv(valid, 'data/group_e/valid.csv')
 
 
 
-data = read_csv('data/group_e/train.csv')
+data = read_csv('data/group_d/train.csv')
 data%>%
-  filter(FileGrp==1)%>%
+  filter(FileGrp==5)%>%
   select(TIMESTAMP, TrueAnswer, BL_25_TOP_25_2, BL_50_TOP_25_2, BL_125_TOP_5_2)%>%
   as.data.table()%>%
   dygraph()%>%
@@ -137,7 +153,7 @@ data%>%
   dyOptions(useDataTimezone = TRUE)
 
 data%>%
-  filter(FileGrp==1)%>%
+  filter(FileGrp==5)%>%
   select(TIMESTAMP, TrueAnswer, ZeroRoll10, ZeroRoll100, ZeroRoll25)%>%
   as.data.table()%>%
   dygraph()%>%
@@ -145,7 +161,7 @@ data%>%
   dyOptions(useDataTimezone = TRUE)
 
 data%>%
-  filter(FileGrp==1)%>%
+  filter(FileGrp==5)%>%
   select(TIMESTAMP, TrueAnswer, RollAvg10, RollAvg50, RollAvg100, RollAvg250)%>%
   as.data.table()%>%
   dygraph()%>%

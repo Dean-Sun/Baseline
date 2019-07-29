@@ -6,8 +6,8 @@ source('code/plott.R')
 
 # start h2o session 
 h2o.init(nthreads=-1, max_mem_size="58G")
-train = h2o.importFile(path = 'data/group_i/train.csv')
-valid = h2o.importFile(path = 'data/group_i/valid.csv')
+train = h2o.importFile(path = 'data/group_d/train.csv')
+valid = h2o.importFile(path = 'data/group_d/valid.csv')
 
 # log the label
 train['TrueAnswer_log'] = log(train['TrueAnswer'])
@@ -45,7 +45,7 @@ valid['y_pred_rf'] = h2o.predict(model_rf, valid)
 metrics(valid['y_pred_rf'], valid[y_true])
 # plot
 valid_dt = as.data.table(valid)
-plotPred(valid_dt, group = 'GroupI-3000', model = 'rf', activity = FALSE)
+plotPred(valid_dt, group = 'GroupE-4446', model = 'rf', activity = FALSE)
 
 
 # Tuning the parameters
@@ -119,7 +119,7 @@ valid['y_pred_deep'] = h2o.predict(model_deep, valid)
 metrics(valid['y_pred_deep'], valid[y_true])
 
 valid_dt$y_pred_deep = as.data.table(valid$y_pred_deep)
-plotPred(valid_dt, group = 'GroupI-3000', model = 'deep', activity = FALSE)
+plotPred(valid_dt, group = 'GroupC-3824', model = 'deep', activity = FALSE)
 
 
 
@@ -133,7 +133,7 @@ plotPred(valid_dt, group = 'GroupI-3000', model = 'deep', activity = FALSE)
 # Save the model
 path <- h2o.saveModel(model_deep, path="models_server/group_i", force=TRUE)
 
-model <- h2o.loadModel('models_server/group_i/model_rf')
+model <- h2o.loadModel('models_server/group_i/model_deep')
 summary(model)
 
 valid['y_pred'] = h2o.predict(model, valid)

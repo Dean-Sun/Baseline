@@ -6,8 +6,8 @@ source('code/plott.R')
 
 # start h2o session 
 h2o.init(nthreads=-1, max_mem_size="58G")
-train = h2o.importFile(path = 'data/group_i/train.csv')
-valid = h2o.importFile(path = 'data/group_i/valid.csv')
+train = h2o.importFile(path = 'data/group_d_to_i/train.csv')
+valid = h2o.importFile(path = 'data/group_d_to_i/valid.csv')
 
 # log the label
 train['TrueAnswer_log'] = log(train['TrueAnswer'])
@@ -29,8 +29,8 @@ model_rf <- h2o.randomForest(
   validation_frame=valid,  
   y=y_true,
   x=X,
-  ntrees = 150,
-  max_depth = 20,
+  ntrees = 130,
+  max_depth = 17,
   min_rows = 1,
   stopping_rounds = 5,
   stopping_metric = 'MSE',
@@ -44,8 +44,10 @@ summary(model_rf)
 valid['y_pred_rf'] = h2o.predict(model_rf, valid)
 metrics(valid['y_pred_rf'], valid[y_true])
 # plot
+valid_dt$y_pred_rf = valid['y_pred_rf']
 valid_dt = as.data.table(valid)
-plotPred(valid_dt, group = 'GroupI-3000', model = 'rf', activity = FALSE)
+
+plotPred(valid_dt, group = 'GroupG-46', model = 'rf', activity = FALSE)
 
 
 # Tuning the parameters
@@ -78,9 +80,9 @@ model_gbm <- h2o.gbm(model_id="model_gbm",
                      validation_frame=valid,
                      x = X, 
                      y = y_true,
-                     ntrees = 150,
-                     max_depth = 13,
-                     stopping_rounds = 5,
+                     ntrees = 200,
+                     max_depth = 10,
+                     stopping_rounds = 8,
                      stopping_metric = 'MSE',
                      stopping_tolerance = 0.001)
 # performance check 
@@ -91,6 +93,32 @@ metrics(valid['y_pred_gbm'], valid[y_true])
 
 valid_dt$y_pred_gbm = as.data.table(valid$y_pred_gbm)
 plotPred(valid_dt, group = 'GroupI-3000', model = 'gbm', activity = FALSE)
+
+##################################################################
+######################## XGBoost #################################
+##################################################################
+
+model_xgb <- h2o.xgboost(model_id="model_xgb", 
+                     training_frame=train, 
+                     validation_frame=valid,
+                     x = X, 
+                     y = y_true,
+                     ntrees = 200,
+                     max_depth = 10,
+                     eta = 0.05,
+                     reg_alpha = 0.5,
+                     stopping_rounds = 8,
+                     stopping_metric = 'MSE',
+                     stopping_tolerance = 0.001,
+                     verbose = TRUE)
+# performance check 
+summary(model_xgb)
+
+valid['y_pred_xgb'] = h2o.predict(model_xgb, valid)
+metrics(valid['y_pred_xgb'], valid[y_true])
+
+valid_dt$y_pred_xgb = as.data.table(valid$y_pred_xgb)
+plotPred(valid_dt, group = 'GroupE-47', model = 'xgb', activity = TRUE)
 
 
 ##################################################################
@@ -103,7 +131,7 @@ model_deep <- h2o.deeplearning(
   validation_frame=valid,
   x=X,
   y=y_true,
-  hidden=c(64,64),
+  hidden=c(48,48,10),
   variable_importances=T,
   epochs=1000000,                      ## hopefully converges earlier...
   score_validation_samples=10000,      ## sample the validation dataset (faster)
@@ -119,7 +147,7 @@ valid['y_pred_deep'] = h2o.predict(model_deep, valid)
 metrics(valid['y_pred_deep'], valid[y_true])
 
 valid_dt$y_pred_deep = as.data.table(valid$y_pred_deep)
-plotPred(valid_dt, group = 'GroupI-3000', model = 'deep', activity = FALSE)
+plotPred(valid_dt, group = 'GroupI-74', model = 'deep', activity = FALSE)
 
 
 
@@ -131,9 +159,9 @@ plotPred(valid_dt, group = 'GroupI-3000', model = 'deep', activity = FALSE)
 ###################### Save and Load ####################################
 #########################################################################
 # Save the model
-path <- h2o.saveModel(model_deep, path="models_server/group_i", force=TRUE)
+path <- h2o.saveModel(model_rf, path="models_server/group_d_to_i", force=TRUE)
 
-model <- h2o.loadModel('models_server/group_i/model_rf')
+model <- h2o.loadModel('models_server/group_i/model_deep')
 summary(model)
 
 valid['y_pred'] = h2o.predict(model, valid)
