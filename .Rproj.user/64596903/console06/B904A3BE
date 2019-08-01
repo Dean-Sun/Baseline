@@ -241,4 +241,13 @@ Swap:             0           0           0
               total        used        free      shared  buff/cache   available
 Mem:          64401       14743       37399           0       12258       48945
 Swap:             0           0           0
-]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ 
+clear
+[3J[H[2J]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ free -m
+              total        used        free      shared  buff/cache   available
+Mem:          64401        2158       50061           0       12181       61530
+Swap:             0           0           0
+[K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ free -m
+              total        used        free      shared  buff/cache   available
+Mem:          64401        1680       48473           0       14247       62008
+Swap:             0           0           0
+]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ 
