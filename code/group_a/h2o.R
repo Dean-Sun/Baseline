@@ -234,9 +234,8 @@ valid['y_pred'] = exp(h2o.predict(model, valid))
 metrics(valid['y_pred'], valid['TrueAnswer'])
 
 
-
-
-
+valid_dt = as.data.table(valid)
+plotPred(valid_dt, group = 'GroupA-926', model = 'xgb', activity = FALSE)
 
 
 
