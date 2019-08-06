@@ -1,104 +1,4 @@
-]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ git reset --hard origin/mastert[K
-HEAD is now at 7dfeecb Initial commit
-[K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ fre[Kee -m
-              total        used        free      shared  buff/cache   available
-Mem:          64401        1078       34749           0       28572       62610
-Swap:             0           0           0
-]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ lscpu
-Architecture:        x86_64
-CPU op-mode(s):      32-bit, 64-bit
-Byte Order:          Little Endian
-CPU(s):              16
-On-line CPU(s) list: 0-15
-Thread(s) per core:  2
-Core(s) per socket:  8
-Socket(s):           1
-NUMA node(s):        1
-Vendor ID:           GenuineIntel
-CPU family:          6
-Model:               79
-Model name:          Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
-Stepping:            1
-CPU MHz:             2300.203
-BogoMIPS:            4600.13
-Hypervisor vendor:   Xen
-Virtualization type: full
-L1d cache:           32K
-L1i cache:           32K
-L2 cache:            256K
-L3 cache:            46080K
-NUMA node0 CPU(s):   0-15
-Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm cpuid_fault invpcid_single pti fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
-[K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ free =[K-m
-              total        used        free      shared  buff/cache   available
-Mem:          64401         656       63463           0         281       63154
-Swap:             0           0           0
-[K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ g[Kfree -m
-              total        used        free      shared  buff/cache   available
-Mem:          64401         601       63344           0         456       63165
-Swap:             0           0           0
-[K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ python -V
-Python 2.7.15rc1
-]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ python -V[K[K[K[Kn3 -V
-Python 3.6.7
-]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ lscpu
-Architecture:        x86_64
-CPU op-mode(s):      32-bit, 64-bit
-Byte Order:          Little Endian
-CPU(s):              16
-On-line CPU(s) list: 0-15
-Thread(s) per core:  2
-Core(s) per socket:  8
-Socket(s):           1
-NUMA node(s):        1
-Vendor ID:           GenuineIntel
-CPU family:          6
-Model:               79
-Model name:          Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
-Stepping:            1
-CPU MHz:             2300.203
-BogoMIPS:            4600.13
-Hypervisor vendor:   Xen
-Virtualization type: full
-L1d cache:           32K
-L1i cache:           32K
-L2 cache:            256K
-L3 cache:            46080K
-NUMA node0 CPU(s):   0-15
-Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm cpuid_fault invpcid_single pti fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
-]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ free -r
-free: invalid option -- 'r'
 
-Usage:
- free [options]
-
-Options:
- -b, --bytes         show output in bytes
-     --kilo          show output in kilobytes
-     --mega          show output in megabytes
-     --giga          show output in gigabytes
-     --tera          show output in terabytes
-     --peta          show output in petabytes
- -k, --kibi          show output in kibibytes
- -m, --mebi          show output in mebibytes
- -g, --gibi          show output in gibibytes
-     --tebi          show output in tebibytes
-     --pebi          show output in pebibytes
- -h, --human         show human-readable output
-     --si            use powers of 1000 not 1024
- -l, --lohi          show detailed low and high memory statistics
- -t, --total         show total for RAM + swap
- -s N, --seconds N   repeat printing every N seconds
- -c N, --count N     repeat printing N times, then exit
- -w, --wide          wide output
-
-     --help     display this help and exit
- -V, --version  output version information and exit
-
-For more details see free(1).
-]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ free -m
-              total        used        free      shared  buff/cache   available
-Mem:          64401        8884       51536           0        3981       54845
 Swap:             0           0           0
 free -m
               total        used        free      shared  buff/cache   available
@@ -299,4 +199,893 @@ Options:
   -V, --version                 display version information and exit
   -v, --validate                update user's timestamp without running a command
   --                            stop processing command line arguments
-]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ 
+]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ cd
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls
+[0m[01;34mBaseline[0m  [01;34mBaseline_Data[0m  [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ cd ../
+]0;/home]0;dsun@ip-10-20-1-161: /home[01;32mdsun@ip-10-20-1-161[00m:[01;34m/home[00m$ ls
+[0m[01;34mdsun[0m  [01;34mgsabatano[0m  [01;34mjandrews[0m  [01;34mmgahan[0m  [01;34mrzhang[0m  [01;34mshiny[0m  [01;34mtbobik[0m  [01;34mubuntu[0m  [01;34mzkhor[0m
+]0;/home]0;dsun@ip-10-20-1-161: /home[01;32mdsun@ip-10-20-1-161[00m:[01;34m/home[00m$ cd ./
+]0;/home]0;dsun@ip-10-20-1-161: /home[01;32mdsun@ip-10-20-1-161[00m:[01;34m/home[00m$ cd ./[C./
+]0;/]0;dsun@ip-10-20-1-161: /[01;32mdsun@ip-10-20-1-161[00m:[01;34m/[00m$ ls
+[0m[01;34mbin[0m   [01;34mdev[0m  [01;34mhome[0m        [01;36minitrd.img.old[0m  [01;34mlib64[0m       [01;34mmedia[0m  [01;34mopt[0m   [01;34mroot[0m  [01;34msbin[0m  [01;34msrv[0m  [30;42mtmp[0m  [01;34mvar[0m      [01;36mvmlinuz.old[0m
+[01;34mboot[0m  [01;34metc[0m  [01;36minitrd.img[0m  [01;34mlib[0m             [01;34mlost+found[0m  [01;34mmnt[0m    [01;34mproc[0m  [01;34mrun[0m   [01;34msnap[0m  [01;34msys[0m  [01;34musr[0m  [01;36mvmlinuz[0m
+]0;/]0;dsun@ip-10-20-1-161: /[01;32mdsun@ip-10-20-1-161[00m:[01;34m/[00m$ cd home/dsun
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls
+[0m[01;34mBaseline[0m  [01;34mBaseline_Data[0m  [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls -l
+total 12
+drwxr-xr-x 8 dsun dsun 4096 Aug  5 17:59 [0m[01;34mBaseline[0m
+drwxr-xr-x 2 root root 4096 Jul 15 15:01 [01;34mBaseline_Data[0m
+drwxr-xr-x 3 dsun dsun 4096 Jul 15 15:45 [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls -l /home
+total 36
+drwxr-xr-x 11 dsun      dsun      4096 Jul 18 16:27 [0m[01;34mdsun[0m
+drwxr-xr-x  7 gsabatano gsabatano 4096 Apr 26 18:59 [01;34mgsabatano[0m
+drwxr-xr-x  7 jandrews  jandrews  4096 Feb 13 18:42 [01;34mjandrews[0m
+drwxr-xr-x 45 mgahan    mgahan    4096 May 31 21:45 [01;34mmgahan[0m
+drwxr-xr-x  8 rzhang    rzhang    4096 Jul 17 17:41 [01;34mrzhang[0m
+drwxr-xr-x  3 shiny     shiny     4096 Mar 26 14:48 [01;34mshiny[0m
+drwxr-xr-x  7 tbobik    tbobik    4096 Feb 13 18:41 [01;34mtbobik[0m
+drwxr-xr-x  5 ubuntu    ubuntu    4096 Feb 13 18:42 [01;34mubuntu[0m
+drwxr-xr-x  7 zkhor     zkhor     4096 Feb 13 18:42 [01;34mzkhor[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls -l /home/dsun
+total 12
+drwxr-xr-x 8 dsun dsun 4096 Aug  5 17:59 [0m[01;34mBaseline[0m
+drwxr-xr-x 2 root root 4096 Jul 15 15:01 [01;34mBaseline_Data[0m
+drwxr-xr-x 3 dsun dsun 4096 Jul 15 15:45 [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls
+[0m[01;34mBaseline[0m  [01;34mBaseline_Data[0m  [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ echo
+
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ echo $SHELL
+/bin/sh
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ pwd 
+/home/dsun
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls
+[0m[01;34mBaseline[0m  [01;34mBaseline_Data[0m  [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls -l
+total 12
+drwxr-xr-x 8 dsun dsun 4096 Aug  5 17:59 [0m[01;34mBaseline[0m
+drwxr-xr-x 2 root root 4096 Jul 15 15:01 [01;34mBaseline_Data[0m
+drwxr-xr-x 3 dsun dsun 4096 Jul 15 15:45 [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls -l[K[K/home
+[0m[01;34mdsun[0m  [01;34mgsabatano[0m  [01;34mjandrews[0m  [01;34mmgahan[0m  [01;34mrzhang[0m  [01;34mshiny[0m  [01;34mtbobik[0m  [01;34mubuntu[0m  [01;34mzkhor[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /home/rzheng[K[K[Kang
+01_Competitive_Script.R  HUMN_Dat.rds  [0m[01;34mR[0m  Sample_Cronjob.R  [01;34mhumn_total_impact[0m  tab_new.csv
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /home/rzhang/gumn[K[K[K[Khumn_tota;[Kl-impact
+ls: cannot access '/home/rzhang/humn_total-impact': No such file or directory
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /home/rzhang/humn_total-impact[1Pimpact_impact
+ 00_WrapUp_Functions.R                              C_Model_Output_Daily_Lag90_AMZ_2.rds
+ 01_Data_Prep.R                                     C_Model_Output_Daily_Lag90_AMZ_Dist_bond2_1.rds
+ 02_Bayesian_Model.R                                C_Model_Output_Daily_Lag90_AMZ_Dist_bond2_10.rds
+ 03_Explore_Model.R                                 C_Model_Output_Daily_Lag90_AMZ_Dist_bond2_11.rds
+ 04_Model_GridSearch.R                              C_Model_Output_Daily_Lag90_AMZ_Dist_bond2_2.rds
+'2019-06-04_HumanN_Marketing Dashboard.xlsx'        C_Model_Output_Daily_Lag90_AMZ_Dist_bond2_3.rds
+'2019-06-18_HumanN_Marketing Dashboard.xlsx'        C_Model_Output_Daily_Lag90_AMZ_Dist_bond2_8.rds
+ A_Model_Data.rds                                   C_Model_Output_Daily_Lag90_AMZ_Dist_bond2_9.rds
+ A_Model_Data_New.csv                               C_Model_Output_Daily_Lag90_AMZ_V3Dist1.rds
+ A_Model_Data_New.rds                               C_Model_Output_Daily_Lag90_AMZ_V4Dist1.rds
+ A_Model_Data_New_2.rds                             C_Model_Output_Daily_Lag90_AMZ_d_1.rds
+ All_Month.xlsx                                     C_Model_Output_Daily_Lag90_ULP_Default_1_V8.rds
+'Amazon report.xlsx'                               'Cashnet Baseline Requirements.pptx'
+ Amazon_Data.rds                                    Direct_ULP.csv
+ Amazon_spend.R                                     HUMN_Data.xlsx
+ B_Fitted_Model_Daily_Lag2_ULP_Default_1.rds        HUMN_Impact.Rmd
+ B_Fitted_Model_Daily_Lag30_ULP_Default_1.rds       HUMN_RadioData.xlsx
+ B_Fitted_Model_Daily_Lag90_AMZ_1.rds               HUMN_TVFB.xlsx
+ B_Fitted_Model_Daily_Lag90_AMZ_2.rds               HUMN_Total_Impact_V2.pptx
+ B_Fitted_Model_Daily_Lag90_AMZ_Dist_bond2_1.rds    HUMN_Total_Impact_V3.pptx
+ B_Fitted_Model_Daily_Lag90_AMZ_Dist_bond2_10.rds   HUMN_Total_Impact_V4.pptx
+ B_Fitted_Model_Daily_Lag90_AMZ_Dist_bond2_11.rds  'HumanN 3P campaign daily snapshot - 20190615.xlsx'
+ B_Fitted_Model_Daily_Lag90_AMZ_Dist_bond2_2.rds   'HumanN Total Impact Data v4.csv'
+ B_Fitted_Model_Daily_Lag90_AMZ_Dist_bond2_3.rds    HumanN_Advertising_daily_spend_data.xlsx
+ B_Fitted_Model_Daily_Lag90_AMZ_Dist_bond2_8.rds    Media_Weeks.rda
+ B_Fitted_Model_Daily_Lag90_AMZ_Dist_bond2_9.rds    [0m[01;34mNewResults[0m
+ B_Fitted_Model_Daily_Lag90_AMZ_V3Dist1.rds         [01;34mPlots[0m
+ B_Fitted_Model_Daily_Lag90_AMZ_V4Dist1.rds         [01;34mResults[0m
+ B_Fitted_Model_Daily_Lag90_AMZ_d_1.rds             [01;34mResults3[0m
+ B_Fitted_Model_Daily_Lag90_ULP_Default_1_V8.rds    desktop.ini
+ Bound2.SearchFunction.R                            humn_dat_facebook1.rds
+ C_Model_Output_Daily_Lag2_ULP_Default_1.rds        humn_dat_facebook2.rds
+ C_Model_Output_Daily_Lag30_ULP_Default_1.rds       humn_total_impact.Rproj
+ C_Model_Output_Daily_Lag90_AMZ_1.rds
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /home/rzhang/humn_total_impact[C[C-/home/rzhang/humn_total_impact[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cl/home/rzhang/humn_total_impact[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C /home/rzhang/humn_total_impact
+total 257636
+-rw-r--r-- 1 rzhang rzhang    18620 Jul 15 23:59  00_WrapUp_Functions.R
+-rw-r--r-- 1 rzhang rzhang     1048 Jul 15 23:04  01_Data_Prep.R
+-rw-r--r-- 1 rzhang rzhang     6628 Jul 15 23:04  02_Bayesian_Model.R
+-rw-r--r-- 1 rzhang rzhang     7819 Jul 15 23:04  03_Explore_Model.R
+-rw-r--r-- 1 rzhang rzhang    18826 Jul 16 01:03  04_Model_GridSearch.R
+-rw-r--r-- 1 rzhang rzhang 14379845 Jul 15 23:04 '2019-06-04_HumanN_Marketing Dashboard.xlsx'
+-rw-r--r-- 1 rzhang rzhang 16261197 Jul 15 23:04 '2019-06-18_HumanN_Marketing Dashboard.xlsx'
+-rw-r--r-- 1 rzhang rzhang    23053 Jul 15 23:04  A_Model_Data.rds
+-rw-r--r-- 1 rzhang rzhang    44335 Jul 15 23:04  A_Model_Data_New.csv
+-rw-r--r-- 1 rzhang rzhang    25318 Jul 15 23:04  A_Model_Data_New.rds
+-rw-r--r-- 1 rzhang rzhang    27872 Jul 15 23:59  A_Model_Data_New_2.rds
+-rw-r--r-- 1 rzhang rzhang    13006 Jul 15 23:04  All_Month.xlsx
+-rw-r--r-- 1 rzhang rzhang 10355189 Jul 15 23:04 'Amazon report.xlsx'
+-rw-r--r-- 1 rzhang rzhang     8196 Jul 15 23:04  Amazon_Data.rds
+-rw-r--r-- 1 rzhang rzhang     5779 Jul 15 23:04  Amazon_spend.R
+-rw-r--r-- 1 rzhang rzhang  7779266 Jul 16 00:01  B_Fitted_Model_Daily_Lag2_ULP_Default_1.rds
+-rw-r--r-- 1 rzhang rzhang  8782594 Jul 16 00:50  B_Fitted_Model_Daily_Lag30_ULP_Default_1.rds
+-rw-r--r-- 1 rzhang rzhang 10735425 Jul 15 23:04  B_Fitted_Model_Daily_Lag90_AMZ_1.rds
+-rw-r--r-- 1 rzhang rzhang 10759691 Jul 15 23:04  B_Fitted_Model_Daily_Lag90_AMZ_2.rds
+-rw-r--r-- 1 rzhang rzhang 10173523 Jul 15 23:04  B_Fitted_Model_Daily_Lag90_AMZ_Dist_bond2_1.rds
+-rw-r--r-- 1 rzhang rzhang 10191556 Jul 15 23:04  B_Fitted_Model_Daily_Lag90_AMZ_Dist_bond2_10.rds
+-rw-r--r-- 1 rzhang rzhang 10208390 Jul 15 23:04  B_Fitted_Model_Daily_Lag90_AMZ_Dist_bond2_11.rds
+-rw-r--r-- 1 rzhang rzhang 10189796 Jul 15 23:04  B_Fitted_Model_Daily_Lag90_AMZ_Dist_bond2_2.rds
+-rw-r--r-- 1 rzhang rzhang 10206736 Jul 15 23:04  B_Fitted_Model_Daily_Lag90_AMZ_Dist_bond2_3.rds
+-rw-r--r-- 1 rzhang rzhang 10157220 Jul 15 23:04  B_Fitted_Model_Daily_Lag90_AMZ_Dist_bond2_8.rds
+-rw-r--r-- 1 rzhang rzhang 10176513 Jul 15 23:04  B_Fitted_Model_Daily_Lag90_AMZ_Dist_bond2_9.rds
+-rw-r--r-- 1 rzhang rzhang 10757283 Jul 15 23:04  B_Fitted_Model_Daily_Lag90_AMZ_V3Dist1.rds
+-rw-r--r-- 1 rzhang rzhang 10746234 Jul 15 23:04  B_Fitted_Model_Daily_Lag90_AMZ_V4Dist1.rds
+-rw-r--r-- 1 rzhang rzhang 10161104 Jul 15 23:04  B_Fitted_Model_Daily_Lag90_AMZ_d_1.rds
+-rw-r--r-- 1 rzhang rzhang 10214768 Jul 16 03:04  B_Fitted_Model_Daily_Lag90_ULP_Default_1_V8.rds
+-rw-r--r-- 1 rzhang rzhang     8830 Jul 15 23:04  Bound2.SearchFunction.R
+-rw-r--r-- 1 rzhang rzhang    85796 Jul 16 00:01  C_Model_Output_Daily_Lag2_ULP_Default_1.rds
+-rw-r--r-- 1 rzhang rzhang    80362 Jul 16 00:50  C_Model_Output_Daily_Lag30_ULP_Default_1.rds
+-rw-r--r-- 1 rzhang rzhang    66713 Jul 15 23:04  C_Model_Output_Daily_Lag90_AMZ_1.rds
+-rw-r--r-- 1 rzhang rzhang    66734 Jul 15 23:04  C_Model_Output_Daily_Lag90_AMZ_2.rds
+-rw-r--r-- 1 rzhang rzhang    66181 Jul 15 23:04  C_Model_Output_Daily_Lag90_AMZ_Dist_bond2_1.rds
+-rw-r--r-- 1 rzhang rzhang    65896 Jul 15 23:04  C_Model_Output_Daily_Lag90_AMZ_Dist_bond2_10.rds
+-rw-r--r-- 1 rzhang rzhang    66120 Jul 15 23:04  C_Model_Output_Daily_Lag90_AMZ_Dist_bond2_11.rds
+-rw-r--r-- 1 rzhang rzhang    66263 Jul 15 23:04  C_Model_Output_Daily_Lag90_AMZ_Dist_bond2_2.rds
+-rw-r--r-- 1 rzhang rzhang    66234 Jul 15 23:04  C_Model_Output_Daily_Lag90_AMZ_Dist_bond2_3.rds
+-rw-r--r-- 1 rzhang rzhang    65758 Jul 15 23:04  C_Model_Output_Daily_Lag90_AMZ_Dist_bond2_8.rds
+-rw-r--r-- 1 rzhang rzhang    66171 Jul 15 23:04  C_Model_Output_Daily_Lag90_AMZ_Dist_bond2_9.rds
+-rw-r--r-- 1 rzhang rzhang    66125 Jul 15 23:04  C_Model_Output_Daily_Lag90_AMZ_V3Dist1.rds
+-rw-r--r-- 1 rzhang rzhang    66312 Jul 15 23:04  C_Model_Output_Daily_Lag90_AMZ_V4Dist1.rds
+-rw-r--r-- 1 rzhang rzhang    64847 Jul 15 23:04  C_Model_Output_Daily_Lag90_AMZ_d_1.rds
+-rw-r--r-- 1 rzhang rzhang    65444 Jul 16 03:04  C_Model_Output_Daily_Lag90_ULP_Default_1_V8.rds
+-rw-r--r-- 1 rzhang rzhang 18003352 Jul 15 23:04 'Cashnet Baseline Requirements.pptx'
+-rw-r--r-- 1 rzhang rzhang   563124 Jul 15 23:10  Direct_ULP.csv
+-rw-r--r-- 1 rzhang rzhang    43743 Jul 15 23:04  HUMN_Data.xlsx
+-rw-r--r-- 1 rzhang rzhang    30136 Jul 16 08:51  HUMN_Impact.Rmd
+-rw-r--r-- 1 rzhang rzhang    14791 Jul 15 23:04  HUMN_RadioData.xlsx
+-rw-r--r-- 1 rzhang rzhang    10999 Jul 15 23:04  HUMN_TVFB.xlsx
+-rw-r--r-- 1 rzhang rzhang 12494232 Jul 15 23:04  HUMN_Total_Impact_V2.pptx
+-rw-r--r-- 1 rzhang rzhang 12554309 Jul 15 23:04  HUMN_Total_Impact_V3.pptx
+-rw-r--r-- 1 rzhang rzhang 12479849 Jul 15 23:04  HUMN_Total_Impact_V4.pptx
+-rw-r--r-- 1 rzhang rzhang   175254 Jul 15 23:04 'HumanN 3P campaign daily snapshot - 20190615.xlsx'
+-rw-r--r-- 1 rzhang rzhang    51973 Jul 15 23:04 'HumanN Total Impact Data v4.csv'
+-rw-r--r-- 1 rzhang rzhang 13172615 Jul 15 23:04  HumanN_Advertising_daily_spend_data.xlsx
+-rw-r--r-- 1 rzhang rzhang   588742 Jul 15 23:04  Media_Weeks.rda
+drwxr-xr-x 2 rzhang rzhang     4096 Jul 15 23:04  [0m[01;34mNewResults[0m
+drwxr-xr-x 2 rzhang rzhang     4096 Jul 15 23:04  [01;34mPlots[0m
+drwxr-xr-x 2 rzhang rzhang     4096 Jul 15 23:04  [01;34mResults[0m
+drwxr-xr-x 2 rzhang rzhang     4096 Jul 15 23:04  [01;34mResults3[0m
+-rw-r--r-- 1 rzhang rzhang      106 Jul 15 23:04  desktop.ini
+-rw-r--r-- 1 rzhang rzhang     5470 Jul 15 23:04  humn_dat_facebook1.rds
+-rw-r--r-- 1 rzhang rzhang     7123 Jul 15 23:04  humn_dat_facebook2.rds
+-rw-r--r-- 1 rzhang rzhang      205 Jul 15 23:04  humn_total_impact.Rproj
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ pwd
+/home/dsun
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ clear
+[3J[H[2J]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls -l
+total 12
+drwxr-xr-x 8 dsun dsun 4096 Aug  5 17:59 [0m[01;34mBaseline[0m
+drwxr-xr-x 2 root root 4096 Jul 15 15:01 [01;34mBaseline_Data[0m
+drwxr-xr-x 3 dsun dsun 4096 Jul 15 15:45 [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /~
+ls: cannot access '/~': No such file or directory
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /~[K[K~
+[0m[01;34mBaseline[0m  [01;34mBaseline_Data[0m  [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls ../../
+[0m[01;34mbin[0m   [01;34mdev[0m  [01;34mhome[0m        [01;36minitrd.img.old[0m  [01;34mlib64[0m       [01;34mmedia[0m  [01;34mopt[0m   [01;34mroot[0m  [01;34msbin[0m  [01;34msrv[0m  [30;42mtmp[0m  [01;34mvar[0m      [01;36mvmlinuz.old[0m
+[01;34mboot[0m  [01;34metc[0m  [01;36minitrd.img[0m  [01;34mlib[0m             [01;34mlost+found[0m  [01;34mmnt[0m    [01;34mproc[0m  [01;34mrun[0m   [01;34msnap[0m  [01;34msys[0m  [01;34musr[0m  [01;36mvmlinuz[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls ../../../
+[0m[01;34mbin[0m   [01;34mdev[0m  [01;34mhome[0m        [01;36minitrd.img.old[0m  [01;34mlib64[0m       [01;34mmedia[0m  [01;34mopt[0m   [01;34mroot[0m  [01;34msbin[0m  [01;34msrv[0m  [30;42mtmp[0m  [01;34mvar[0m      [01;36mvmlinuz.old[0m
+[01;34mboot[0m  [01;34metc[0m  [01;36minitrd.img[0m  [01;34mlib[0m             [01;34mlost+found[0m  [01;34mmnt[0m    [01;34mproc[0m  [01;34mrun[0m   [01;34msnap[0m  [01;34msys[0m  [01;34musr[0m  [01;36mvmlinuz[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls ../../../[K[K[Kopt
+[0m[01;34mcontainerd[0m  [01;34mshiny-server[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls ../../opt[K[K[K[K[K[K[K[K[K[K /
+[0m[01;34mbin[0m   [01;34mdev[0m  [01;34mhome[0m        [01;36minitrd.img.old[0m  [01;34mlib64[0m       [01;34mmedia[0m  [01;34mopt[0m   [01;34mroot[0m  [01;34msbin[0m  [01;34msrv[0m  [30;42mtmp[0m  [01;34mvar[0m      [01;36mvmlinuz.old[0m
+[01;34mboot[0m  [01;34metc[0m  [01;36minitrd.img[0m  [01;34mlib[0m             [01;34mlost+found[0m  [01;34mmnt[0m    [01;34mproc[0m  [01;34mrun[0m   [01;34msnap[0m  [01;34msys[0m  [01;34musr[0m  [01;36mvmlinuz[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /home/dsun/
+.Rhistory      .bash_logout   .cache/        .gitconfig     .profile       .ssh/          Baseline/      R/
+.bash_history  .bashrc        .config/       .keras/        .rstudio/      .virtualenvs/  Baseline_Data/ 
+]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /home/dsun/
+.Rhistory      .bash_logout   .cache/        .gitconfig     .profile       .ssh/          Baseline/      R/
+.bash_history  .bashrc        .config/       .keras/        .rstudio/      .virtualenvs/  Baseline_Data/ 
+]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /home/dsun/
+.Rhistory      .bash_logout   .cache/        .gitconfig     .profile       .ssh/          Baseline/      R/
+.bash_history  .bashrc        .config/       .keras/        .rstudio/      .virtualenvs/  Baseline_Data/ 
+]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /home/dsun/
+.Rhistory      .bash_logout   .cache/        .gitconfig     .profile       .ssh/          Baseline/      R/
+.bash_history  .bashrc        .config/       .keras/        .rstudio/      .virtualenvs/  Baseline_Data/ 
+]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /home/dsun/
+.Rhistory      .bash_logout   .cache/        .gitconfig     .profile       .ssh/          Baseline/      R/
+.bash_history  .bashrc        .config/       .keras/        .rstudio/      .virtualenvs/  Baseline_Data/ 
+]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /home/dsun/
+.Rhistory      .bash_logout   .cache/        .gitconfig     .profile       .ssh/          Baseline/      R/
+.bash_history  .bashrc        .config/       .keras/        .rstudio/      .virtualenvs/  Baseline_Data/ 
+]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /home/dsun/[Khome/dsun/[K
+bin/            home/           lib64/          opt/            sbin/           tmp/            vmlinuz.old
+boot/           initrd.img      lost+found/     proc/           snap/           usr/            
+dev/            initrd.img.old  media/          root/           srv/            var/            
+etc/            lib/            mnt/            run/            sys/            vmlinuz         
+]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /jome[K[K[K[Khome/dsun/
+.Rhistory      .bash_logout   .cache/        .gitconfig     .profile       .ssh/          Baseline/      R/
+.bash_history  .bashrc        .config/       .keras/        .rstudio/      .virtualenvs/  Baseline_Data/ 
+]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /home/dsun/Baseline_Data/
+GroupA_test_dat.fst   GroupC_test_dat.fst   GroupE_test_dat.fst   GroupG_test_dat.fst   GroupI_test_dat.fst
+GroupA_train_dat.fst  GroupC_train_dat.fst  GroupE_train_dat.fst  GroupG_train_dat.fst  GroupI_train_dat.fst
+GroupB_test_dat.fst   GroupD_test_dat.fst   GroupF_test_dat.fst   GroupH_test_dat.fst
+GroupB_train_dat.fst  GroupD_train_dat.fst  GroupF_train_dat.fst  GroupH_train_dat.fst
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /[K../../etc
+[0m[01;34mNetworkManager[0m          debian_version       hosts.deny       magic.mime               protocols      [01;34mssl[0m
+[01;34mODBCDataSources[0m         [01;34mdefault[0m              [01;34mifplugd[0m          mailcap                  [01;34mpulse[0m          subgid
+[01;34mR[0m                       deluser.conf         [01;34minit[0m             mailcap.order            [01;34mpython[0m         subgid-
+[01;34mX11[0m                     [01;34mdepmod.d[0m             [01;34minit.d[0m           manpath.config           [01;34mpython2.7[0m      subuid
+[01;34macpi[0m                    [01;34mdhcp[0m                 [01;34minitramfs-tools[0m  [01;34mmdadm[0m                    [01;34mpython3[0m        subuid-
+adduser.conf            [01;34mdnsmasq.d[0m            inputrc          mime.types               [01;34mpython3.6[0m      sudoers
+[01;34malternatives[0m            [01;34mdnsmasq.d-available[0m  [01;34miproute2[0m         mke2fs.conf              [01;34mrc0.d[0m          [01;34msudoers.d[0m
+[01;34mapm[0m                     [01;34mdocker[0m               [01;34miscsi[0m            [01;34mmodprobe.d[0m               [01;34mrc1.d[0m          sysctl.conf
+[01;34mapparmor[0m                [01;34mdpkg[0m                 issue            modules                  [01;34mrc2.d[0m          [01;34msysctl.d[0m
+[01;34mapparmor.d[0m              drirc                issue.net        [01;34mmodules-load.d[0m           [01;34mrc3.d[0m          [01;34msystemd[0m
+[01;34mapport[0m                  ec2_version          [01;34mjava-11-openjdk[0m  [01;36mmtab[0m                     [01;34mrc4.d[0m          [01;34mterminfo[0m
+[01;34mapt[0m                     [01;34memacs[0m                [01;34mjava-8-openjdk[0m   nanorc                   [01;34mrc5.d[0m          [01;34mthermald[0m
+at.deny                 environment          [01;34mkernel[0m           [01;34mnetplan[0m                  [01;34mrc6.d[0m          timezone
+[01;34mavahi[0m                   ethertypes           kernel-img.conf  [01;34mnetwork[0m                  [01;34mrcS.d[0m          [01;34mtmpfiles.d[0m
+bash.bashrc             [01;34mfonts[0m                [01;34mlandscape[0m        networks                 [01;36mresolv.conf[0m    ucf.conf
+bash_completion         fstab                ld.so.cache      [01;34mnewt[0m                     [01;34mresolvconf[0m     [01;34mudev[0m
+[01;34mbash_completion.d[0m       fuse.conf            ld.so.conf       nsswitch.conf            [01;32mrmt[0m            [01;34mufw[0m
+bindresvport.blacklist  gai.conf             [01;34mld.so.conf.d[0m     odbc.ini                 rpc            [01;34mupdate-manager[0m
+[01;34mbinfmt.d[0m                [01;34mgeoclue[0m              [01;34mldap[0m             odbcinst.ini             [01;34mrstudio[0m        [01;34mupdate-motd.d[0m
+[01;34mbyobu[0m                   [01;34mglvnd[0m                legal            [01;34mopt[0m                      rsyslog.conf   [01;34mupdate-notifier[0m
+[01;34mca-certificates[0m         [01;34mgroff[0m                libaudit.conf    [01;36mos-release[0m               [01;34mrsyslog.d[0m      updatedb.conf
+ca-certificates.conf    group                [01;34mlibnl-3[0m          overlayroot.conf         screenrc       usb_modeswitch.conf
+[01;34mcalendar[0m                group-               [01;34mlibpaper.d[0m       overlayroot.local.conf   securetty      [01;34musb_modeswitch.d[0m
+[01;34mcloud[0m                   [01;34mgrub.d[0m               locale.alias     pam.conf                 [01;34msecurity[0m       [01;34mvim[0m
+[01;34mconsole-setup[0m           gshadow              locale.gen       [01;34mpam.d[0m                    [01;34mselinux[0m        [01;34mvmware-tools[0m
+[01;34mcron.d[0m                  gshadow-             [01;36mlocaltime[0m        papersize                [01;34msensors.d[0m      [01;36mvtrgb[0m
+[01;34mcron.daily[0m              [01;34mgss[0m                  [01;34mlogcheck[0m         passwd                   sensors3.conf  wgetrc
+[01;34mcron.hourly[0m             [01;34mgtk-2.0[0m              login.defs       passwd-                  services       [01;34mwpa_supplicant[0m
+[01;34mcron.monthly[0m            [01;34mgtk-3.0[0m              logrotate.conf   [01;34mperl[0m                     shadow         [01;34mxdg[0m
+[01;34mcron.weekly[0m             hdparm.conf          [01;34mlogrotate.d[0m      [01;34mpm[0m                       shadow-        zsh_command_not_found
+crontab                 hibagent-config.cfg  lsb-release      [01;34mpolkit-1[0m                 shells
+[01;34mcryptsetup-initramfs[0m    host.conf            ltrace.conf      [01;34mpollinate[0m                [01;34mshiny-server[0m
+crypttab                hostname             [01;34mlvm[0m              popularity-contest.conf  [01;34mskel[0m
+[01;34mdbus-1[0m                  hosts                machine-id       profile                  sos.conf
+debconf.conf            hosts.allow          magic            [01;34mprofile.d[0m                [01;34mssh[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls ../../etc/pulse/client.conf [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kython
+python/    python2.7/ python3/   python3.6/ 
+]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls ../../etc/python3.6
+sitecustomize.py
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls ../../etc/python3.6[K/home/dsun/Baseline_Data/[Kbin
+[0m[01;32mbash[0m                [01;32mchgrp[0m          [01;32mgetfacl[0m     [01;32mmkfs.btrfs[0m     [01;32mntfsmove[0m      [01;32msetupcon[0m                        [01;32mulockmgr_server[0m
+[01;32mbtrfs[0m               [01;32mchmod[0m          [01;32mgrep[0m        [01;32mmknod[0m          [01;32mntfsrecover[0m   [01;36msh[0m                              [37;41mumount[0m
+[01;32mbtrfs-debug-tree[0m    [01;32mchown[0m          [01;32mgunzip[0m      [01;32mmktemp[0m         [01;32mntfssecaudit[0m  [01;36msh.distrib[0m                      [01;32muname[0m
+[01;32mbtrfs-find-root[0m     [01;32mchvt[0m           [01;32mgzexe[0m       [01;32mmore[0m           [01;32mntfstruncate[0m  [01;32msleep[0m                           [01;32muncompress[0m
+[01;32mbtrfs-image[0m         [01;32mcp[0m             [01;32mgzip[0m        [37;41mmount[0m          [01;32mntfsusermap[0m   [01;32mss[0m                              [01;32municode_start[0m
+[01;32mbtrfs-map-logical[0m   [01;32mcpio[0m           [01;32mhostname[0m    [01;32mmountpoint[0m     [01;32mntfswipe[0m      [01;36mstatic-sh[0m                       [01;32mvdir[0m
+[01;32mbtrfs-select-super[0m  [01;32mdash[0m           [01;32mip[0m          [01;36mmt[0m             [01;36mopen[0m          [01;32mstty[0m                            [01;32mwdctl[0m
+[01;32mbtrfs-zero-log[0m      [01;32mdate[0m           [01;32mjournalctl[0m  [01;32mmt-gnu[0m         [01;32mopenvt[0m        [37;41msu[0m                              [01;32mwhich[0m
+[01;36mbtrfsck[0m             [01;32mdd[0m             [01;32mkbd_mode[0m    [01;32mmv[0m             [01;36mpidof[0m         [01;32msync[0m                            [01;32mwhiptail[0m
+[01;32mbtrfstune[0m           [01;32mdf[0m             [01;32mkill[0m        [01;32mnano[0m           [37;41mping[0m          [01;32msystemctl[0m                       [01;36mypdomainname[0m
+[01;32mbunzip2[0m             [01;32mdir[0m            [01;32mkmod[0m        [01;36mnc[0m             [01;36mping4[0m         [01;36msystemd[0m                         [01;32mzcat[0m
+[01;32mbusybox[0m             [01;32mdmesg[0m          [01;32mless[0m        [01;32mnc.openbsd[0m     [01;36mping6[0m         [01;32msystemd-ask-password[0m            [01;32mzcmp[0m
+[01;32mbzcat[0m               [01;36mdnsdomainname[0m  [01;32mlessecho[0m    [01;36mnetcat[0m         [01;32mplymouth[0m      [01;32msystemd-escape[0m                  [01;32mzdiff[0m
+[01;36mbzcmp[0m               [01;36mdomainname[0m     [01;36mlessfile[0m    [01;32mnetstat[0m        [01;32mps[0m            [01;32msystemd-hwdb[0m                    [01;32mzegrep[0m
+[01;32mbzdiff[0m              [01;32mdumpkeys[0m       [01;32mlesskey[0m     [01;32mnetworkctl[0m     [01;32mpwd[0m           [01;32msystemd-inhibit[0m                 [01;32mzfgrep[0m
+[01;36mbzegrep[0m             [01;32mecho[0m           [01;32mlesspipe[0m    [01;36mnisdomainname[0m  [01;36mrbash[0m         [01;32msystemd-machine-id-setup[0m        [01;32mzforce[0m
+[01;32mbzexe[0m               [01;32med[0m             [01;32mln[0m          [01;32mntfs-3g[0m        [01;32mreadlink[0m      [01;32msystemd-notify[0m                  [01;32mzgrep[0m
+[01;36mbzfgrep[0m             [01;32megrep[0m          [01;32mloadkeys[0m    [01;32mntfs-3g.probe[0m  [01;32mred[0m           [01;32msystemd-sysusers[0m                [01;32mzless[0m
+[01;32mbzgrep[0m              [01;32mfalse[0m          [01;32mlogin[0m       [01;32mntfscat[0m        [01;32mrm[0m            [01;32msystemd-tmpfiles[0m                [01;32mzmore[0m
+[01;32mbzip2[0m               [01;32mfgconsole[0m      [01;32mloginctl[0m    [01;32mntfscluster[0m    [01;32mrmdir[0m         [01;32msystemd-tty-ask-password-agent[0m  [01;32mznew[0m
+[01;32mbzip2recover[0m        [01;32mfgrep[0m          [01;32mlowntfs-3g[0m  [01;32mntfscmp[0m        [01;36mrnano[0m         [01;32mtar[0m
+[01;36mbzless[0m              [01;32mfindmnt[0m        [01;32mls[0m          [01;32mntfsfallocate[0m  [01;32mrun-parts[0m     [01;32mtempfile[0m
+[01;32mbzmore[0m              [01;32mfsck.btrfs[0m     [01;32mlsblk[0m       [01;32mntfsfix[0m        [01;32msed[0m           [01;32mtouch[0m
+[01;32mcat[0m                 [01;32mfuser[0m          [01;36mlsmod[0m       [01;32mntfsinfo[0m       [01;32msetfacl[0m       [01;32mtrue[0m
+[01;32mchacl[0m               [37;41mfusermount[0m     [01;32mmkdir[0m       [01;32mntfsls[0m         [01;32msetfont[0m       [01;32mudevadm[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /bin/pwd
+[0m[01;32m/bin/pwd[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls /bin/pwd[K[K[Knc
+[0m[01;36m/bin/nc[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ clear
+[3J[H[2J]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls ~
+[0m[01;34mBaseline[0m  [01;34mBaseline_Data[0m  [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ pwd
+/home/dsun
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ file BA[Kaseline
+Baseline/      Baseline_Data/ 
+]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ file Baseline
+Baseline/      Baseline_Data/ 
+]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ file Baseline_Data/Group
+GroupA_test_dat.fst   GroupC_test_dat.fst   GroupE_test_dat.fst   GroupG_test_dat.fst   GroupI_test_dat.fst
+GroupA_train_dat.fst  GroupC_train_dat.fst  GroupE_train_dat.fst  GroupG_train_dat.fst  GroupI_train_dat.fst
+GroupB_test_dat.fst   GroupD_test_dat.fst   GroupF_test_dat.fst   GroupH_test_dat.fst   
+GroupB_train_dat.fst  GroupD_train_dat.fst  GroupF_train_dat.fst  GroupH_train_dat.fst  
+]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ file Baseline_Data/Grouppwd[Kls ~[1Ppwdfile Baseline_Data/Group[K[K[K[K[K[K[K[K[K[K[K/
+.Rhistory         .git/             Baseline.Rproj    code/             models/           performance.xlsx
+.Rproj.user/      .gitignore        README.md         data/             models_server/    
+]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ file Baseline/code/
+Deeplearning_Keras.R   group_a/               group_e/               models_deeplearning.R  plott.R
+EDA_and_DataProcess.R  group_d/               group_i/               models_glm.R           tools.R
+archive.R              group_d_to_i/          model_autoML.R         models_tree.R          xgboost.R
+]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ file Baseline/code/models_
+models_deeplearning.R  models_glm.R           models_tree.R          
+]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ file Baseline/code/models_tree.R
+Baseline/code/models_tree.R: ASCII text
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ file Baseline/code/models_tree.R[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kmoedls_ser[K[K[K[K[K[K[K[Kdels_server/
+group_a/      group_d_to_i/ group_i/      model_deep_1  model_rf      
+]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ file Baseline/models_server/model_rf
+Baseline/models_server/model_rf: data
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls
+[0m[01;34mBaseline[0m  [01;34mBaseline_Data[0m  [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls -a
+[0m[01;34m.[0m   .Rhistory      .bash_logout  [01;34m.cache[0m   .gitconfig  .profile  [01;34m.ssh[0m          [01;34mBaseline[0m       [01;34mR[0m
+[01;34m..[0m  .bash_history  .bashrc       [01;34m.config[0m  [01;34m.keras[0m      [01;34m.rstudio[0m  [01;34m.virtualenvs[0m  [01;34mBaseline_Data[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls -a[K[K.keras/
+keras.json
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ filw [K[Ke ~
+/home/dsun: directory
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ man ls
+[23;0;0t]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ man file
+[23;0;0t]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ man ls
+[23;0;0t]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ 
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ man mab[Kn
+[23;0;0t]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ man -k
+apropos what?
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ 
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ man man
+[23;0;0t]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ msn
+
+Command 'msn' not found, did you mean:
+
+  command 'mtn' from deb monotone
+  command 'mln' from deb mmv
+  command 'mon' from deb mon
+  command 'msb' from deb mysql-sandbox
+  command 'mn' from deb mininet
+  command 'mvn' from deb maven
+  command 'sn' from deb mono-devel
+  command 'mhn' from deb mailutils-mh
+  command 'mhn' from deb nmh
+  command 'man' from deb man-db
+
+Try: apt install <deb name>
+
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ man
+What manual page do you want?
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ man -k list
+acl (5)              - Access Control Lists
+acpi_listen (8)      - ACPI event listener
+add-apt-repository (1) - Adds a repository into the /etc/apt/sources.list or /etc/apt/sources.list.d or removes an exi...
+add-shell (8)        - add shells to the list of valid login shells
+Algorithm::Diff (3pm) - Compute `intelligent' differences between two files / lists
+Algorithm::DiffOld (3pm) - Compute `intelligent' differences between two files / lists but use the old (<=0.59) interf...
+appres (1)           - list X application resource database
+apt-add-repository (1) - Adds a repository into the /etc/apt/sources.list or /etc/apt/sources.list.d or removes an exi...
+argz (3)             - functions to handle an argz list
+argz_add (3)         - functions to handle an argz list
+argz_add_sep (3)     - functions to handle an argz list
+argz_append (3)      - functions to handle an argz list
+argz_count (3)       - functions to handle an argz list
+argz_create (3)      - functions to handle an argz list
+argz_create_sep (3)  - functions to handle an argz list
+argz_delete (3)      - functions to handle an argz list
+argz_extract (3)     - functions to handle an argz list
+argz_insert (3)      - functions to handle an argz list
+argz_next (3)        - functions to handle an argz list
+argz_replace (3)     - functions to handle an argz list
+argz_stringify (3)   - functions to handle an argz list
+BIO_listen (3ssl)    - BIO socket communication setup routines
+btrfs-property (8)   - get/set/list properties for given filesystem object
+byobu-silent (1)     - Silence all of Byobu's status indicators, eliminate the hardstatus line, and the window list
+chacl (1)            - change the access control list of a file or directory
+check-language-support (1) - returns the list of missing packages in order to provide a complete language environment
+ciphers (1ssl)       - SSL cipher display and cipher list tool
+CIRCLEQ_ENTRY (3)    - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+CIRCLEQ_HEAD (3)     - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+CIRCLEQ_INIT (3)     - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+CIRCLEQ_INSERT_AFTER (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+CIRCLEQ_INSERT_BEFORE (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+CIRCLEQ_INSERT_HEAD (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+CIRCLEQ_INSERT_TAIL (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+CIRCLEQ_REMOVE (3)   - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+column (1)           - columnate lists
+corelist (1)         - a commandline frontend to Module::CoreList
+CTLOG_STORE_free (3ssl) - Create and populate a Certificate Transparency log list
+CTLOG_STORE_load_default_file (3ssl) - Create and populate a Certificate Transparency log list
+CTLOG_STORE_load_file (3ssl) - Create and populate a Certificate Transparency log list
+CTLOG_STORE_new (3ssl) - Create and populate a Certificate Transparency log list
+d2i_SCT_LIST (3ssl)  - convert objects from/to ASN.1/DER representation
+debhelper-obsolete-compat (7) - List of no longer supported compat levels
+dh_listpackages (1)  - list binary packages debhelper will act on
+dir (1)              - list directory contents
+dl_iterate_phdr (3)  - walk through list of shared objects
+docker-checkpoint-ls (1) - List checkpoints for a container
+docker-config-ls (1) - List configs
+docker-container-ls (1) - List containers
+docker-container-port (1) - List port mappings or a specific mapping for the container
+docker-image-ls (1)  - List images
+docker-images (1)    - List images
+docker-manifest (1)  - Manage Docker image manifests and manifest lists
+docker-manifest-create (1) - Create a local manifest list for annotating and pushing to a registry
+docker-manifest-inspect (1) - Display an image manifest, or manifest list
+docker-manifest-push (1) - Push a manifest list to a repository
+docker-network-ls (1) - List networks
+docker-node-ls (1)   - List nodes in the swarm
+docker-node-ps (1)   - List tasks running on one or more nodes, defaults to current node
+docker-plugin-ls (1) - List plugins
+docker-port (1)      - List port mappings or a specific mapping for the container
+docker-ps (1)        - List containers
+docker-secret-ls (1) - List secrets
+docker-service-ls (1) - List services
+docker-service-ps (1) - List the tasks of one or more services
+docker-stack-ls (1)  - List stacks
+docker-stack-ps (1)  - List the tasks in the stack
+docker-stack-services (1) - List the services in the stack
+docker-volume-ls (1) - List volumes
+Dpkg::Control::Fields (3perl) - manage (list of official) control fields
+Dpkg::Control::FieldsCore (3perl) - manage (list of official) control fields
+DTLSv1_listen (3ssl) - listen for incoming DTLS connections
+fc-list (1)          - list available fonts
+FcConfigGetCacheDirs (3) - return the list of directories searched for cache files
+FcFontList (3)       - List fonts
+FcFontSetList (3)    - List fonts from a set of font sets
+FcFontSort (3)       - Return list of matching fonts
+FcGetDefaultLangs (3) - Get the default languages list
+FcGetLangs (3)       - Get list of languages
+FcLangSetGetLangs (3) - get the list of languages in the langset
+FcStrListCreate (3)  - create a string iterator
+FcStrListDone (3)    - destroy a string iterator
+FcStrListFirst (3)   - get first string in iteration
+FcStrListNext (3)    - get next string in iteration
+File::Listing (3pm)  - parse directory listing
+gendict (1)          - Compiles word list into ICU string trie dictionary
+get_robust_list (2)  - get/set list of robust futexes
+getfacl (1)          - get file access control lists
+getgrouplist (3)     - get list of groups to which a user belongs
+getgroups (2)        - get/set list of supplementary group IDs
+getgroups32 (2)      - get/set list of supplementary group IDs
+getpcaps (1)         - List Process Capabilities
+git-branch (1)       - List, create, or delete branches
+git-ls-remote (1)    - List references in a remote repository
+git-ls-tree (1)      - List the contents of a tree object
+git-replace (1)      - Create, list, delete refs to replace objects
+git-rev-list (1)     - Lists commit objects in reverse chronological order
+git-show-ref (1)     - List references in a local repository
+git-tag (1)          - Create, list, delete or verify a tag object signed with GPG
+hosts.equiv (5)      - list of hosts and users that are granted "trusted" r command access to your system
+i2d_SCT_LIST (3ssl)  - convert objects from/to ASN.1/DER representation
+i2o_SCT (3ssl)       - decode and encode Signed Certificate Timestamp lists in TLS wire format
+i2o_SCT_LIST (3ssl)  - decode and encode Signed Certificate Timestamp lists in TLS wire format
+ifcfg (8)            - simplistic script which replaces ifconfig IP management
+initgroups (3)       - initialize the supplementary group access list
+IO::Socket::SSL::PublicSuffix (3pm) - provide access to Mozilla's list of effective TLD names
+ioctl_list (2)       - list of ioctl calls in Linux/i386 kernel
+iptables-extensions (8) - list of extensions in the standard iptables distribution
+jps (1)              - Lists the instrumented Java Virtual Machines (JVMs) on the target system. This command is exper...
+kbxutil (1)          - List, export, import Keybox data
+last (1)             - show a listing of last logged in users
+lastb (1)            - show a listing of last logged in users
+lio_listio (3)       - initiate a list of I/O requests
+list (1ssl)          - list algorithms and features
+LIST_EMPTY (3)       - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+LIST_ENTRY (3)       - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+LIST_FIRST (3)       - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+LIST_FOREACH (3)     - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+LIST_HEAD (3)        - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+LIST_HEAD_INITIALIZER (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+LIST_INIT (3)        - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+LIST_INSERT_AFTER (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+LIST_INSERT_BEFORE (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+LIST_INSERT_HEAD (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+LIST_NEXT (3)        - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+LIST_REMOVE (3)      - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+listen (2)           - listen for connections on a socket
+listres (1)          - list resources in widgets
+lorder (1)           - list dependencies for object files
+ls (1)               - list directory contents
+lsattr (1)           - list file attributes on a Linux second extended file system
+lsblk (8)            - list block devices
+lshw (1)             - list hardware
+lsinitramfs (8)      - list content of an initramfs image
+lslocks (8)          - list local system locks
+lsmem (1)            - list the ranges of available memory with their online status
+lsns (8)             - list namespaces
+lsof (8)             - list open files
+lspci (8)            - list all PCI devices
+lspgpot (1)          - extracts the ownertrust values from PGP keyrings and list them in GnuPG ownertrust format.
+lsusb (8)            - list USB devices
+lvmdiskscan (8)      - List devices that may be used as physical volumes
+lvscan (8)           - List all logical volumes in all volume groups
+lxc.alias.list (1)   - List aliases
+lxc.cluster.list (1) - List all the cluster members
+lxc.config.device.list (1) - List container devices
+lxc.config.template.list (1) - List container file templates
+lxc.config.trust.list (1) - List trusted clients
+lxc.image.alias.list (1) - List image aliases
+lxc.image.list (1)   - List images
+lxc.list (1)         - List containers
+lxc.network.list (1) - List available networks
+lxc.network.list-leases (1) - List DHCP leases
+lxc.operation.list (1) - List background operations
+lxc.profile.device.list (1) - List container devices
+lxc.profile.list (1) - List profiles
+lxc.remote.list (1)  - List the available remotes
+lxc.storage.list (1) - List available storage pools
+lxc.storage.volume.list (1) - List storage volumes
+lxc.operation (1)    - List, show and delete background operations
+lxc.remote (1)       - Manage the list of remote servers
+Mail::Field::AddrList (3pm) - object representation of e-mail address lists
+manifest (1)         - import or export a package list
+nc (1)               - arbitrary TCP and UDP connections and listens
+nc.openbsd (1)       - arbitrary TCP and UDP connections and listens
+nc_openbsd (1)       - arbitrary TCP and UDP connections and listens
+netcat (1)           - arbitrary TCP and UDP connections and listens
+nm (1)               - list symbols from object files
+ntfsls (8)           - list directory contents on an NTFS filesystem
+o2i_SCT (3ssl)       - decode and encode Signed Certificate Timestamp lists in TLS wire format
+o2i_SCT_LIST (3ssl)  - decode and encode Signed Certificate Timestamp lists in TLS wire format
+openssl-ciphers (1ssl) - SSL cipher display and cipher list tool
+openssl-list (1ssl)  - list algorithms and features
+pam_listfile (8)     - deny or allow services based on an arbitrary file
+pam_localuser (8)    - require users to be listed in /etc/passwd
+pcimodules (8)       - List kernel driver modules available for all currently plugged in PCI devices
+pcre16_free_substring_list (3) - Perl-compatible regular expressions
+pcre16_get_substring_list (3) - Perl-compatible regular expressions
+pcre32_free_substring_list (3) - Perl-compatible regular expressions
+pcre32_get_substring_list (3) - Perl-compatible regular expressions
+pcre_free_substring_list (3) - Perl-compatible regular expressions
+pcre_get_substring_list (3) - Perl-compatible regular expressions
+popcon-largest-unused (8) - List size of unused packages
+popularity-contest (8) - list the most popular Debian packages
+pvscan (8)           - List all physical volumes
+queue (3)            - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+remove-shell (8)     - remove shells from the list of valid login shells
+routel (8)           - list routes with pretty output format
+rtmon (8)            - listens to and monitors RTnetlink
+SCT_LIST_free (3ssl) - A Certificate Transparency Signed Certificate Timestamp
+SCT_LIST_print (3ssl) - Prints Signed Certificate Timestamps in a human-readable way
+SCT_LIST_validate (3ssl) - checks Signed Certificate Timestamps (SCTs) are valid
+securetty (5)        - file which lists terminals from which root can log in
+services (5)         - Internet network services list
+set_robust_list (2)  - get/set list of robust futexes
+setfacl (1)          - set file access control lists
+setgroups (2)        - get/set list of supplementary group IDs
+setgroups32 (2)      - get/set list of supplementary group IDs
+size (1)             - list section sizes and total size.
+SLIST_EMPTY (3)      - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+SLIST_ENTRY (3)      - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+SLIST_FIRST (3)      - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+SLIST_FOREACH (3)    - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+SLIST_HEAD (3)       - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+SLIST_HEAD_INITIALIZER (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+SLIST_INIT (3)       - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+SLIST_INSERT_AFTER (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+SLIST_INSERT_HEAD (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+SLIST_NEXT (3)       - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+SLIST_REMOVE (3)     - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+SLIST_REMOVE_HEAD (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+sources.list (5)     - List of configured APT data sources
+SSL_add_client_CA (3ssl) - set list of CAs sent to the client when requesting a client certificate
+SSL_CTX_add_client_CA (3ssl) - set list of CAs sent to the client when requesting a client certificate
+SSL_CTX_get_ciphers (3ssl) - get list of available SSL_CIPHERs
+SSL_CTX_get_client_CA_list (3ssl) - get list of client CAs
+SSL_CTX_get_max_cert_list (3ssl) - manipulate allowed size for the peer's certificate chain
+SSL_CTX_set1_client_sigalgs_list (3ssl) - set supported signature algorithms
+SSL_CTX_set1_curves_list (3ssl) - EC supported curve functions
+SSL_CTX_set1_sigalgs_list (3ssl) - set supported signature algorithms
+SSL_CTX_set_cipher_list (3ssl) - choose list of available SSL_CIPHERs
+SSL_CTX_set_client_CA_list (3ssl) - set list of CAs sent to the client when requesting a client certificate
+SSL_CTX_set_ctlog_list_file (3ssl) - load a Certificate Transparency log list from a file
+SSL_CTX_set_default_ctlog_list_file (3ssl) - load a Certificate Transparency log list from a file
+SSL_CTX_set_max_cert_list (3ssl) - manipulate allowed size for the peer's certificate chain
+SSL_get1_supported_ciphers (3ssl) - get list of available SSL_CIPHERs
+SSL_get_cipher_list (3ssl) - get list of available SSL_CIPHERs
+SSL_get_ciphers (3ssl) - get list of available SSL_CIPHERs
+SSL_get_client_CA_list (3ssl) - get list of client CAs
+SSL_get_client_ciphers (3ssl) - get list of available SSL_CIPHERs
+SSL_get_max_cert_list (3ssl) - manipulate allowed size for the peer's certificate chain
+SSL_set1_client_sigalgs_list (3ssl) - set supported signature algorithms
+SSL_set1_curves_list (3ssl) - EC supported curve functions
+SSL_set1_sigalgs_list (3ssl) - set supported signature algorithms
+SSL_set_cipher_list (3ssl) - choose list of available SSL_CIPHERs
+SSL_set_client_CA_list (3ssl) - set list of CAs sent to the client when requesting a client certificate
+SSL_set_max_cert_list (3ssl) - manipulate allowed size for the peer's certificate chain
+STAILQ_CONCAT (3)    - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+STAILQ_EMPTY (3)     - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+STAILQ_ENTRY (3)     - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+STAILQ_FIRST (3)     - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+STAILQ_FOREACH (3)   - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+STAILQ_HEAD (3)      - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+STAILQ_HEAD_INITIALIZER (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+STAILQ_INIT (3)      - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+STAILQ_INSERT_AFTER (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+STAILQ_INSERT_HEAD (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+STAILQ_INSERT_TAIL (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+STAILQ_NEXT (3)      - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+STAILQ_REMOVE (3)    - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+STAILQ_REMOVE_HEAD (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+stdarg (3)           - variable argument lists
+suffixes (7)         - list of file suffixes
+sys_errlist (3)      - print a system error message
+systemd-path (1)     - List and query system and user paths
+systemd-tty-ask-password-agent (1) - List or process pending systemd password requests
+systemd.index (7)    - List all manpages from the systemd project
+TAILQ_CONCAT (3)     - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_EMPTY (3)      - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_ENTRY (3)      - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_FIRST (3)      - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_FOREACH (3)    - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_FOREACH_REVERSE (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_HEAD (3)       - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_HEAD_INITIALIZER (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_INIT (3)       - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_INSERT_AFTER (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_INSERT_BEFORE (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_INSERT_HEAD (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_INSERT_TAIL (3) - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_LAST (3)       - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_NEXT (3)       - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_PREV (3)       - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_REMOVE (3)     - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+TAILQ_SWAP (3)       - implementations of singly-linked lists, singly-linked tail queues, lists and tail queues
+tipc-media (8)       - list or modify media properties
+tipc-node (8)        - modify and show local node parameters or list peer nodes
+unzip (1)            - list, test and extract compressed files in a ZIP archive
+update-grub-gfxpayload (8) - update /boot/grub/gfxblacklist.txt
+update-pciids (8)    - download new version of the PCI ID list
+update-usbids (8)    - download new version of the USB ID list
+va_arg (3)           - variable argument lists
+va_copy (3)          - variable argument lists
+va_end (3)           - variable argument lists
+va_start (3)         - variable argument lists
+vdir (1)             - list directory contents
+x86_64-linux-gnu-nm (1) - list symbols from object files
+x86_64-linux-gnu-size (1) - list section sizes and total size.
+XBaseFontNameListOfFontSet (3) - obtain fontset information
+XcupGetReservedColormapEntries (3) - list colormap entries reserved by the system
+XDefaultString (3)   - convert text lists and text property structures
+xdr_pmaplist (3)     - library routines for remote procedure calls
+XFreeExtensionList (3) - list available extensions
+XFreeStringList (3)  - convert string lists and text property structure
+XkbAddSymInterpret (3) - Add a symbol interpretation to the list of symbol interpretations in an XkbCompatRec
+XkbFreeComponentList (3) - Free the structure returned by XkbListComponents
+XkbGetKeyTypes (3)   - Obtain the list of available key types in the server's keyboard mapping
+XkbListComponents (3) - List of components for one or more component types
+XListDepths (3)      - Display macros and functions
+XListExtensions (3)  - list available extensions
+XListFonts (3)       - obtain or free font names and information
+XListFontsWithInfo (3) - obtain or free font names and information
+XListHosts (3)       - control host access and host control structure
+XListInstalledColormaps (3) - control colormaps
+XListPixmapFormats (3) - image format functions and macros
+XListProperties (3)  - obtain and change window properties
+xlsatoms (1)         - list interned atoms defined on server
+xlsclients (1)       - list client applications running on a display
+xlsfonts (1)         - server font list displayer for X
+XmbTextListToTextProperty (3) - convert text lists and text property structures
+XmbTextPropertyToTextList (3) - convert text lists and text property structures
+XML::XPathEngine::NodeSet (3pm) - a list of XML document nodes
+XQueryExtension (3)  - list available extensions
+XrmGetResource (3)   - retrieve database resources and search lists
+XrmQGetResource (3)  - retrieve database resources and search lists
+XrmQGetSearchList (3) - retrieve database resources and search lists
+XrmQGetSearchResource (3) - retrieve database resources and search lists
+XrmStringToBindingQuarkList (3) - manipulate resource quarks
+XrmStringToQuarkList (3) - manipulate resource quarks
+XStringListToTextProperty (3) - convert string lists and text property structure
+XtCallCallbackList (3) - process callbacks
+XTextProperty (3)    - convert string lists and text property structure
+XTextPropertyToStringList (3) - convert string lists and text property structure
+XtFindFile (3)       - search for a file using substitutions in the path list
+XtGetActionList (3)  - obtain class action list
+XtGetConstraintResourceList (3) - obtain resource list
+XtGetDisplays (3)    - retrieve a list of displays associated with an application context
+XtGetResourceList (3) - obtain resource list
+XtKeysymToKeycodeList (3) - query keysyms and keycodes
+XtMergeArgLists (3)  - set and merge ArgLists
+XtSetArg (3)         - set and merge ArgLists
+XtVaCreateArgsList (3) - dynamically allocate a varargs list
+Xutf8TextListToTextProperty (3) - convert text lists and text property structures
+Xutf8TextPropertyToTextList (3) - convert text lists and text property structures
+XVaCreateNestedList (3) - allocate a nested variable argument list
+XwcFreeStringList (3) - convert text lists and text property structures
+XwcTextListToTextProperty (3) - convert text lists and text property structures
+XwcTextPropertyToTextList (3) - convert text lists and text property structures
+zipinfo (1)          - list detailed information about a ZIP archive
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ pwd
+/home/dsun
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ la -a
+[0m[01;34m.[0m   .Rhistory      .bash_logout  [01;34m.cache[0m   .gitconfig  .lesshst  [01;34m.rstudio[0m  [01;34m.virtualenvs[0m  [01;34mBaseline_Data[0m
+[01;34m..[0m  .bash_history  .bashrc       [01;34m.config[0m  [01;34m.keras[0m      .profile  [01;34m.ssh[0m      [01;34mBaseline[0m      [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ la -a[K-all
+[0m[01;34m.[0m   .Rhistory      .bash_logout  [01;34m.cache[0m   .gitconfig  .lesshst  [01;34m.rstudio[0m  [01;34m.virtualenvs[0m  [01;34mBaseline_Data[0m
+[01;34m..[0m  .bash_history  .bashrc       [01;34m.config[0m  [01;34m.keras[0m      .profile  [01;34m.ssh[0m      [01;34mBaseline[0m      [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ la --all[K[K[K[Kalh
+total 84K
+drwxr-xr-x 11 dsun dsun 4.0K Aug  5 23:25 [0m[01;34m.[0m
+drwxr-xr-x 11 root root 4.0K Jul 15 14:53 [01;34m..[0m
+-rw-r--r--  1 dsun dsun  16K Jul 25 23:19 .Rhistory
+-rw-------  1 dsun dsun  891 Aug  1 01:54 .bash_history
+-rw-r--r--  1 dsun dsun  220 Apr  4  2018 .bash_logout
+-rw-r--r--  1 dsun dsun 3.7K Apr  4  2018 .bashrc
+drwx------  3 dsun dsun 4.0K Jul 18 16:25 [01;34m.cache[0m
+drwxr-xr-x  3 dsun dsun 4.0K Jul 15 15:53 [01;34m.config[0m
+-rw-r--r--  1 dsun dsun   55 Jul 15 17:19 .gitconfig
+drwxr-xr-x  2 dsun dsun 4.0K Jul 18 16:27 [01;34m.keras[0m
+-rw-------  1 dsun dsun   32 Aug  5 23:25 .lesshst
+-rw-r--r--  1 dsun dsun  807 Apr  4  2018 .profile
+drwxr-xr-x 15 dsun dsun 4.0K Aug  5 17:59 [01;34m.rstudio[0m
+drwxr-xr-x  2 dsun dsun 4.0K Jul 15 18:14 [01;34m.ssh[0m
+drwxr-xr-x  3 dsun dsun 4.0K Jul 18 16:25 [01;34m.virtualenvs[0m
+drwxr-xr-x  8 dsun dsun 4.0K Aug  5 17:59 [01;34mBaseline[0m
+drwxr-xr-x  2 root root 4.0K Jul 15 15:01 [01;34mBaseline_Data[0m
+drwxr-xr-x  3 dsun dsun 4.0K Jul 15 15:45 [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ la -alh[K
+total 84
+drwxr-xr-x 11 dsun dsun  4096 Aug  5 23:25 [0m[01;34m.[0m
+drwxr-xr-x 11 root root  4096 Jul 15 14:53 [01;34m..[0m
+-rw-r--r--  1 dsun dsun 15578 Jul 25 23:19 .Rhistory
+-rw-------  1 dsun dsun   891 Aug  1 01:54 .bash_history
+-rw-r--r--  1 dsun dsun   220 Apr  4  2018 .bash_logout
+-rw-r--r--  1 dsun dsun  3771 Apr  4  2018 .bashrc
+drwx------  3 dsun dsun  4096 Jul 18 16:25 [01;34m.cache[0m
+drwxr-xr-x  3 dsun dsun  4096 Jul 15 15:53 [01;34m.config[0m
+-rw-r--r--  1 dsun dsun    55 Jul 15 17:19 .gitconfig
+drwxr-xr-x  2 dsun dsun  4096 Jul 18 16:27 [01;34m.keras[0m
+-rw-------  1 dsun dsun    32 Aug  5 23:25 .lesshst
+-rw-r--r--  1 dsun dsun   807 Apr  4  2018 .profile
+drwxr-xr-x 15 dsun dsun  4096 Aug  5 17:59 [01;34m.rstudio[0m
+drwxr-xr-x  2 dsun dsun  4096 Jul 15 18:14 [01;34m.ssh[0m
+drwxr-xr-x  3 dsun dsun  4096 Jul 18 16:25 [01;34m.virtualenvs[0m
+drwxr-xr-x  8 dsun dsun  4096 Aug  5 17:59 [01;34mBaseline[0m
+drwxr-xr-x  2 root root  4096 Jul 15 15:01 [01;34mBaseline_Data[0m
+drwxr-xr-x  3 dsun dsun  4096 Jul 15 15:45 [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ mkfir [K[K[K[Kdir lin[K[K[Klinux_test
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ man mkdir
+[23;0;0t]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ mkdir -p linux_test
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ mkdir -p linux_test[10Pan mkdirkdir linux_test[10Pla -alh-alla[K[2Ppwdman -k list[Ksnan man[1P-kman[1Plsfile[2Plsfile ~ls .keras/-a[K[Kfile Baseline/models_server/model_rf[4Pcode/models_tree.R[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpwd[Kls ~clearls /bin/ncpwd[K../../etc/python3.6[K/home/dsun/Baseline_Data/[K../../opt../[K~[K/~-lclear[2Ppwdls -l /home/rzhang/humn_total_impact[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[3P/home/rzhang/humn_total_impact-impact[K[K[3P-l[K[K[Kpwd echo $SHELL[7Ppwd [Kls -l/home/rzhang/humn_total-impact_impact[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C-l /home/rzhang/humn_total_impact[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpwd[Kclearls -l/~[1P~[K[K[K[Kmkdir -pv ln[Kinux [K_test
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ mkdir -pv linux_test[1P linux_test[1P linux_testv linux_test[C linux_test[C
+mkdir: cannot create directory ‘linux_test’: File exists
+[K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ la
+.Rhistory      .bash_logout  [0m[01;34m.cache[0m   .gitconfig  .lesshst  [01;34m.rstudio[0m  [01;34m.virtualenvs[0m  [01;34mBaseline_Data[0m  [01;34mlinux_test[0m
+.bash_history  .bashrc       [01;34m.config[0m  [01;34m.keras[0m      .profile  [01;34m.ssh[0m      [01;34mBaseline[0m      [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ la[Ks -a
+[0m[01;34m.[0m   .Rhistory      .bash_logout  [01;34m.cache[0m   .gitconfig  .lesshst  [01;34m.rstudio[0m  [01;34m.virtualenvs[0m  [01;34mBaseline_Data[0m  [01;34mlinux_test[0m
+[01;34m..[0m  .bash_history  .bashrc       [01;34m.config[0m  [01;34m.keras[0m      .profile  [01;34m.ssh[0m      [01;34mBaseline[0m      [01;34mR[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ mkdir linux_test/a1
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ rmdir linux_test
+rmdir: failed to remove 'linux_test': Directory not empty
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ pwd
+/home/dsun
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ cd linux_test
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ pwd
+/home/dsun/linux_test
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ tough[K[Kch example
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ ls
+[0m[01;34ma1[0m  example
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ cp a1 a1_copy
+cp: -r not specified; omitting directory 'a1'
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ cp a1 a1_copy[K[K[K[K[K[K[K[K[K[Kexample example_copy
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ cp example[K[K[K[K[K[K[K[K[K[Kla [K[Ks ../../
+[0m[01;34mdsun[0m  [01;34mgsabatano[0m  [01;34mjandrews[0m  [01;34mmgahan[0m  [01;34mrzhang[0m  [01;34mshiny[0m  [01;34mtbobik[0m  [01;34mubuntu[0m  [01;34mzkhor[0m
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ ls ../../[K[K[K
+[0m[01;34mBaseline[0m  [01;34mBaseline_Data[0m  [01;34mR[0m  [01;34mlinux_test[0m
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ cp exampe[Kle ../backup
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ rmdir ../backup
+rmdir: failed to remove '../backup': Not a directory
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ rm ../backup
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ rm ../backupdir ../backup[5@cp example[C[C[C[C[C[C[C[C[C[Cls ../[Kcp example ../backup[K[K[K[K[K[K
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ rm ../example
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ is
+is: command not found
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ ls
+[0m[01;34ma1[0m  example  example_copy
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ cp a1 a2
+cp: -r not specified; omitting directory 'a1'
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ tough [K[K[Kch a1 what
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ touch a1 what[C[1Pwhat/what
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ cp a1 a2
+cp: -r not specified; omitting directory 'a1'
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ cp -r a1 a2
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ [K]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ m[Kmkdir a3
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ cp -r a3 a3_copy
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ mv a3 a3-copy
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ rm a3-cp[Kopy
+rm: cannot remove 'a3-copy': Is a directory
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ rm a3-copy[K[K[K[K[K_copy
+rm: cannot remove 'a3_copy': Is a directory
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ mkdir backups
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ mv a2 backups/a2
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ mv a2 backups/a2[Kmv a2 backups/a2[3Pkdir backups[3Prm a3_copy-copy_copymkdir backupsv a2 backups/a2[Kman rm
+[23;0;0t]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ free
+              total        used        free      shared  buff/cache   available
+Mem:       65947156      907424    51196804         992    13842928    64310436
+Swap:             0           0           0
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ vi
+cleqa[K[Kar
+[3J[H[2J]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ cd ~[K[K[K[Kls ~
+[0m[01;34mBaseline[0m  [01;34mBaseline_Data[0m  [01;34mR[0m  [01;34mlinux_test[0m
+]0;/home/dsun/linux_test]0;dsun@ip-10-20-1-161: ~/linux_test[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/linux_test[00m$ cd ~/Baseline/models_server/group[K[K[K[K[K[K
+]0;/home/dsun/Baseline/models_server]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ mv h2o-genmodel.jar group_a/mike's_model
+> ^C
+]0;/home/dsun/Baseline/models_server]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ deep[K[K[K[Kmv DeepLearning_grid_1_AutoML_20190528_031324_model_54.zip ^C
+]0;/home/dsun/Baseline/models_server]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ javac main.java
+main.java:2: error: package hex.genmodel.easy does not exist
+import hex.genmodel.easy.RowData;
+                        ^
+main.java:3: error: package hex.genmodel.easy does not exist
+import hex.genmodel.easy.EasyPredictModelWrapper;
+                        ^
+main.java:4: error: package hex.genmodel.easy.prediction does not exist
+import hex.genmodel.easy.prediction.*;
+^
+main.java:5: error: package hex.genmodel does not exist
+import hex.genmodel.MojoModel;
+                   ^
+main.java:9: error: cannot find symbol
+    EasyPredictModelWrapper model = new EasyPredictModelWrapper(MojoModel.load("GBM_model_R_1475248925871_74.zip"));
+    ^
+  symbol:   class EasyPredictModelWrapper
+  location: class main
+main.java:9: error: cannot find symbol
+    EasyPredictModelWrapper model = new EasyPredictModelWrapper(MojoModel.load("GBM_model_R_1475248925871_74.zip"));
+                                        ^
+  symbol:   class EasyPredictModelWrapper
+  location: class main
+main.java:9: error: cannot find symbol
+    EasyPredictModelWrapper model = new EasyPredictModelWrapper(MojoModel.load("GBM_model_R_1475248925871_74.zip"));
+                                                                ^
+  symbol:   variable MojoModel
+  location: class main
+main.java:11: error: cannot find symbol
+    RowData row = new RowData();
+    ^
+  symbol:   class RowData
+  location: class main
+main.java:11: error: cannot find symbol
+    RowData row = new RowData();
+                      ^
+  symbol:   class RowData
+  location: class main
+main.java:18: error: cannot find symbol
+    BinomialModelPrediction p = model.predictBinomial(row);
+    ^
+  symbol:   class BinomialModelPrediction
+  location: class main
+10 errors
+]0;/home/dsun/Baseline/models_server]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ javac -cp h2o-genmodel.jar -J-Xms2g -J-XX:MaxPermSize=128m main.java
+OpenJDK 64-Bit Server VM warning: ignoring option MaxPermSize=128m; support was removed in 8.0
+]0;/home/dsun/Baseline/models_server]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ java -cp .:h2o-genmodel.jar main
+Exception in thread "main" java.io.FileNotFoundException: File GBM_model_R_1475248925871_74.zip cannot be found.
+	at hex.genmodel.MojoModel.load(MojoModel.java:35)
+	at main.main(main.java:9)
+]0;/home/dsun/Baseline/models_server]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ java -cp .:h2o-genmodel.jar mainc -cp h2o-genmodel.jar -J-Xms2g -J-XX:MaxPermSize=128m main.java
+OpenJDK 64-Bit Server VM warning: ignoring option MaxPermSize=128m; support was removed in 8.0
+]0;/home/dsun/Baseline/models_server]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ javac -cp h2o-genmodel.jar -J-Xms2g -J-XX:MaxPermSize=128m main.java[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[36P -cp .:h2o-genmodel.jar main
+Exception in thread "main" hex.genmodel.easy.exception.PredictException: Binomial prediction type is not supported for this model.
+	at hex.genmodel.easy.EasyPredictModelWrapper.validateModelCategory(EasyPredictModelWrapper.java:794)
+	at hex.genmodel.easy.EasyPredictModelWrapper.preamble(EasyPredictModelWrapper.java:802)
+	at hex.genmodel.easy.EasyPredictModelWrapper.predictBinomial(EasyPredictModelWrapper.java:538)
+	at hex.genmodel.easy.EasyPredictModelWrapper.predictBinomial(EasyPredictModelWrapper.java:526)
+	at main.main(main.java:18)
+]0;/home/dsun/Baseline/models_server]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline/models_server[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline/models_server[00m$ cd ~
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ pwd
+/home/dsun
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls ~
+[0m[01;34mBaseline[0m  [01;34mBaseline_Data[0m  [01;34mR[0m  [01;34mlinux_test[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ ls
+[0m[01;34mBaseline[0m  [01;34mBaseline_Data[0m  [01;34mR[0m  [01;34mlinux_test[0m
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ vi linus[Kx_test/firstfile
+[?2004h[23;0;0t]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ cat vi linux_test/firstfile[C[1P linux_test/firstfile[1P linux_test/firstfilec linux_test/firstfilea linux_test/firstfilet linux_test/firstfile
+instert something 
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ python
+Python 2.7.15rc1 (default, Nov 12 2018, 14:31:15) 
+[GCC 7.3.0] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+KeyboardInterrupt
+>>> d
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'd' is not defined
+>>> 
+KeyboardInterrupt
+>>> 
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ 

@@ -61,7 +61,7 @@ model_gbm <- h2o.gbm(training_frame=train,
                      validation_frame=valid,
                      x = X, 
                      y = y_log,
-                     ntrees = 200,
+                     ntrees = 50,
                      max_depth = 20,
                      stopping_rounds = 5,
                      stopping_metric = 'MSE',
@@ -74,6 +74,13 @@ metrics(valid['y_pred_gbm'], valid[y_true])
 
 valid_dt$y_pred_gbm = as.data.table(valid$y_pred_gbm)
 plotPred(valid_dt, group = 'GroupA-804', model = 'gbm', activity = FALSE)
+
+
+path <- "/home/dsun/Baseline/models_server/mojo/test"
+mojo_destination <- h2o.download_mojo(model = model_gbm, path = path)
+imported_model <- h2o.import_mojo('/home/dsun/Baseline/models_server/mojo/test/model_gbm_log.zip')
+
+
 
 
 ##################################################################
@@ -176,6 +183,45 @@ valid_dt$y_pred_deep = as.data.table(valid$y_pred_deep)
 plotPred(valid_dt, group = 'GroupA-806', model = 'deep', activity = FALSE)
 
 
+################# Tuning the parameters #########################
+hyper_params = list(
+  activation=c("Rectifier","Tanh","Maxout","RectifierWithDropout","TanhWithDropout","MaxoutWithDropout"),
+  hidden=list(c(10,10), c(20,20),c(50,50), c(64,64), c(8,8,8), c(16,16,16), c(30,30,30),c(25,25,25,25)),
+  input_dropout_ratio=c(0,0.05,0.1,0.2),
+  l1=seq(0,0.5,0.01),
+  l2=seq(0,0.5,0.01),
+  rate = seq(0.001, 0.3, 0.001),
+  rate_annealing=c(1e-8,1e-7,1e-6)
+)
+
+search_criteria = list(
+  strategy = "RandomDiscrete",
+  max_runtime_secs = 57600,
+  max_models = 300,
+  seed = 1234,
+  stopping_rounds = 10,
+  stopping_metric = "MSE",
+  stopping_tolerance = 0.0001
+)
+
+grid_deep <- h2o.grid(
+  hyper_params = hyper_params,
+  search_criteria = search_criteria,
+  algorithm = "deeplearning",
+  x = X,
+  y = y_true,
+  training_frame = train,
+  validation_frame = valid,
+  max_runtime_secs = 5400,
+  stopping_rounds = 10, 
+  stopping_tolerance = 0.0001, 
+  stopping_metric = "MSE",
+  seed = 1234
+)
+
+
+
+
 
 #####################################################################
 ########################### Ensemble ################################
@@ -225,12 +271,42 @@ metrics(valid['y_pred_stack'], valid[y_true])
 # Save the model
 path <- h2o.saveModel(model_gbm, path="models_server/group_a", force=TRUE)
 
-model <- h2o.loadModel('models_server/group_a/model_xgb')
+model <- h2o.import_mojo('/home/dsun/Baseline/models_server/mojo/DeepLearning_grid_1_AutoML_20190528_031324_model_54.zip')
 summary(model)
 
+
+
+
+pred = h2o.mojo_predict_csv(
+  input_csv_path = 'data/group_a/valid.csv',
+  mojo_zip_path = 'models_server/mojo/DeepLearning_grid_1_AutoML_20190528_031324_model_54.zip',
+  verbose = T
+  )
+
+
+
+valid['y_pred'] = as.h2o(pred)
+metrics(valid['y_pred'], valid['TrueAnswer'])
+
+
+valid_dt = as.data.table(valid)
+names(valid_dt)[68] = 'y_pred_mike'
+plotPred(valid_dt, group = 'GroupA-841', model = 'mike', activity = FALSE)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 valid['y_pred'] = exp(h2o.predict(model, valid))
-
-
 metrics(valid['y_pred'], valid['TrueAnswer'])
 
 
