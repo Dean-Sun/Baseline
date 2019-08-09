@@ -20,17 +20,33 @@ auto = h2o.automl(
   training_frame=train, 
   x=X,
   y=y_true,
-  max_runtime_secs = 54000,
-  max_models = 15,
-  nfolds = 2,
-  exclude_algos = c('GLM'),
-  stopping_metric = 'MAE', 
+  max_runtime_secs = 86400,
+  leaderboard_frame = valid,
+  max_models = 100,
+  nfolds = 3,
+  exclude_algos = c('GLM','DRF'),
+  stopping_metric = 'MSE', 
   stopping_rounds = 5,
-  stopping_tolerance = 0.01,
+  stopping_tolerance = 0.001,
   seed = 123,
-  sort_metric = 'MAE',
+  sort_metric = 'MSE',
   project_name = 'baseline_autoML'
 )
+
+auto_1 = auto@leader
+auto_2 = auto@leaderboard$model_id[2]
+auto_3 = auto@leaderboard$model_id[3]
+auto_4 = auto@leaderboard$model_id[4]
+auto_5 = auto@leaderboard$model_id[5]
+
+h2o.saveModel(auto_1, path="models_server", force=TRUE)
+h2o.saveModel(auto_2, path="models_server", force=TRUE)
+h2o.saveModel(auto_3, path="models_server", force=TRUE)
+h2o.saveModel(auto_4, path="models_server", force=TRUE)
+h2o.saveModel(auto_5, path="models_server", force=TRUE)
+
+
+
 
 
 # performance check 

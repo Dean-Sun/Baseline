@@ -77,11 +77,11 @@ write_csv(data_val, 'data/csv_cut/data_val.csv')
 
 ########################################################
 
-
+data = read_csv('data/csv_cut/data.csv')
 
 plotCorr(train)
 
-plotAct(data%>%filter(CME_Group == 'GroupF'), day = 193)
+plotAct(data%>%filter(CME_Group == 'GroupA'), day = 265)
 
 plotDist(data%>%filter(CME_Group == 'GroupA'))
 
@@ -90,7 +90,7 @@ temp = data%>%
   select(TrueAnswer, Activity, Baseline, 10:65)
 
 
-
+data%>%filter(CME_Group == 'GroupA')%>%select(FileGrp)
 
 
 
@@ -127,10 +127,10 @@ write_csv(test, 'data/group_a/test.csv')
 
 
 
-####### Combine group D-I 
+####### Combine group C-I 
 
-train_files = list.files("../Baseline_Data", pattern="train", recursive = TRUE, full.names = TRUE)[4:9]
-valid_files <- list.files("../Baseline_Data", pattern="test", recursive = TRUE, full.names = TRUE)[4:9]
+train_files = list.files("../Baseline_Data", pattern="train", recursive = TRUE, full.names = TRUE)[3:9]
+valid_files <- list.files("../Baseline_Data", pattern="test", recursive = TRUE, full.names = TRUE)[3:9]
 
 
 train = rbindlist(lapply(train_files, function(x) read_fst(x,as.data.table = TRUE, from=1, to=288000)), fill=TRUE)
@@ -139,8 +139,8 @@ valid = rbindlist(lapply(valid_files, function(x) read_fst(x,as.data.table = TRU
 train$id = paste0(train$CME_Group, '-', as.character(train$FileGrp))
 valid$id = paste0(valid$CME_Group, '-', as.character(valid$FileGrp))
 
-write_csv(train, 'data/group_d_to_i/train.csv')
-write_csv(valid, 'data/group_d_to_i/valid.csv')
+write_csv(train, 'data/group_c_to_i/train.csv')
+write_csv(valid, 'data/group_c_to_i/valid.csv')
 
 
 

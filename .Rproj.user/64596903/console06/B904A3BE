@@ -1,101 +1,4 @@
 
-Swap:             0           0           0
-free -m
-              total        used        free      shared  buff/cache   available
-Mem:          64401         782       59889           0        3729       62949
-Swap:             0           0           0
-[K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ free -,[Km
-              total        used        free      shared  buff/cache   available
-Mem:          64401        1562       61354           0        1484       62126
-Swap:             0           0           0
-[K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ free -.[Km
-              total        used        free      shared  buff/cache   available
-Mem:          64401         744       62693           0         962       62946
-Swap:             0           0           0
-]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ [K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ git gc
-Counting objects: 76, done.
-Delta compression using up to 16 threads.
-Compressing objects:   1% (1/62)   Compressing objects:   3% (2/62)   Compressing objects:   4% (3/62)   Compressing objects:   6% (4/62)   Compressing objects:   8% (5/62)   Compressing objects:   9% (6/62)   Compressing objects:  11% (7/62)   Compressing objects:  12% (8/62)   Compressing objects:  14% (9/62)   Compressing objects:  16% (10/62)   Compressing objects:  17% (11/62)   Compressing objects:  19% (12/62)   Compressing objects:  20% (13/62)   Compressing objects:  22% (14/62)   Compressing objects:  24% (15/62)   Compressing objects:  25% (16/62)   Compressing objects:  27% (17/62)   Compressing objects:  29% (18/62)   Compressing objects:  30% (19/62)   Compressing objects:  32% (20/62)   Compressing objects:  33% (21/62)   Compressing objects:  35% (22/62)   Compressing objects:  37% (23/62)   Compressing objects:  38% (24/62)   Compressing objects:  40% (25/62)   Compressing objects:  41% (26/62)   Compressing objects:  43% (27/62)   Compressing objects:  45% (28/62)   Compressing objects:  46% (29/62)   Compressing objects:  48% (30/62)   Compressing objects:  50% (31/62)   Compressing objects:  51% (32/62)   Compressing objects:  53% (33/62)   Compressing objects:  54% (34/62)   Compressing objects:  56% (35/62)   Compressing objects:  58% (36/62)   Compressing objects:  59% (37/62)   Compressing objects:  61% (38/62)   Compressing objects:  62% (39/62)   Compressing objects:  64% (40/62)   Compressing objects:  66% (41/62)   Compressing objects:  67% (42/62)   Compressing objects:  69% (43/62)   Compressing objects:  70% (44/62)   Compressing objects:  72% (45/62)   Compressing objects:  74% (46/62)   Compressing objects:  75% (47/62)   Compressing objects:  77% (48/62)   Compressing objects:  79% (49/62)   Compressing objects:  80% (50/62)   Compressing objects:  82% (51/62)   Compressing objects:  83% (52/62)   Compressing objects:  85% (53/62)   Compressing objects:  87% (54/62)   Compressing objects:  88% (55/62)   Compressing objects:  90% (56/62)   Compressing objects:  91% (57/62)   Compressing objects:  93% (58/62)   Compressing objects:  95% (59/62)   Compressing objects:  96% (60/62)   Compressing objects:  98% (61/62)   Compressing objects: 100% (62/62)   Compressing objects: 100% (62/62), done.
-Writing objects:   1% (1/76)   Writing objects:   2% (2/76)   Writing objects:   3% (3/76)   Writing objects:   5% (4/76)   Writing objects:   6% (5/76)   Writing objects:   7% (6/76)   Writing objects:   9% (7/76)   Writing objects:  10% (8/76)   Writing objects:  13% (10/76)   Writing objects:  14% (11/76)   Writing objects:  15% (12/76)   Writing objects:  17% (13/76)   Writing objects:  18% (14/76)   Writing objects:  22% (17/76)   Writing objects:  25% (19/76)   Writing objects:  26% (20/76)   Writing objects:  30% (23/76)   Writing objects:  31% (24/76)   Writing objects:  32% (25/76)   Writing objects:  34% (26/76)   Writing objects:  35% (27/76)   Writing objects:  36% (28/76)   Writing objects:  38% (29/76)   Writing objects:  39% (30/76)   Writing objects:  40% (31/76)   Writing objects:  42% (32/76)   Writing objects:  43% (33/76)   Writing objects:  44% (34/76)   Writing objects:  46% (35/76)   Writing objects:  47% (36/76)   Writing objects:  48% (37/76)   Writing objects:  50% (38/76)   Writing objects:  51% (39/76)   Writing objects:  52% (40/76)   Writing objects:  53% (41/76)   Writing objects:  55% (42/76)   Writing objects:  56% (43/76)   Writing objects:  57% (44/76)   Writing objects:  59% (45/76)   Writing objects:  60% (46/76)   Writing objects:  61% (47/76)   Writing objects:  63% (48/76)   Writing objects:  64% (49/76)   Writing objects:  65% (50/76)   Writing objects:  67% (51/76)   Writing objects:  68% (52/76)   Writing objects:  69% (53/76)   Writing objects:  71% (54/76)   Writing objects:  72% (55/76)   Writing objects:  73% (56/76)   Writing objects:  75% (57/76)   Writing objects:  76% (58/76)   Writing objects:  77% (59/76)   Writing objects:  78% (60/76)   Writing objects:  80% (61/76)   Writing objects:  81% (62/76)   Writing objects:  82% (63/76)   Writing objects:  84% (64/76)   Writing objects:  85% (65/76)   Writing objects:  86% (66/76)   Writing objects:  88% (67/76)   Writing objects:  89% (68/76)   Writing objects:  90% (69/76)   Writing objects:  92% (70/76)   Writing objects:  93% (71/76)   Writing objects:  96% (73/76)   Writing objects:  98% (75/76)   Writing objects: 100% (76/76)   Writing objects: 100% (76/76), done.
-Total 76 (delta 29), reused 20 (delta 2)
-]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ git gc
-Counting objects: 76, done.
-Delta compression using up to 16 threads.
-Compressing objects:   2% (1/35)   Compressing objects:   5% (2/35)   Compressing objects:   8% (3/35)   Compressing objects:  11% (4/35)   Compressing objects:  14% (5/35)   Compressing objects:  17% (6/35)   Compressing objects:  20% (7/35)   Compressing objects:  22% (8/35)   Compressing objects:  25% (9/35)   Compressing objects:  28% (10/35)   Compressing objects:  31% (11/35)   Compressing objects:  34% (12/35)   Compressing objects:  37% (13/35)   Compressing objects:  40% (14/35)   Compressing objects:  42% (15/35)   Compressing objects:  45% (16/35)   Compressing objects:  48% (17/35)   Compressing objects:  51% (18/35)   Compressing objects:  54% (19/35)   Compressing objects:  57% (20/35)   Compressing objects:  60% (21/35)   Compressing objects:  62% (22/35)   Compressing objects:  65% (23/35)   Compressing objects:  68% (24/35)   Compressing objects:  71% (25/35)   Compressing objects:  74% (26/35)   Compressing objects:  77% (27/35)   Compressing objects:  80% (28/35)   Compressing objects:  82% (29/35)   Compressing objects:  85% (30/35)   Compressing objects:  88% (31/35)   Compressing objects:  91% (32/35)   Compressing objects:  94% (33/35)   Compressing objects:  97% (34/35)   Compressing objects: 100% (35/35)   Compressing objects: 100% (35/35), done.
-Writing objects:   1% (1/76)   Writing objects:   2% (2/76)   Writing objects:   3% (3/76)   Writing objects:   5% (4/76)   Writing objects:   6% (5/76)   Writing objects:   7% (6/76)   Writing objects:   9% (7/76)   Writing objects:  10% (8/76)   Writing objects:  13% (10/76)   Writing objects:  14% (11/76)   Writing objects:  15% (12/76)   Writing objects:  17% (13/76)   Writing objects:  18% (14/76)   Writing objects:  22% (17/76)   Writing objects:  25% (19/76)   Writing objects:  26% (20/76)   Writing objects:  30% (23/76)   Writing objects:  31% (24/76)   Writing objects:  32% (25/76)   Writing objects:  34% (26/76)   Writing objects:  35% (27/76)   Writing objects:  36% (28/76)   Writing objects:  38% (29/76)   Writing objects:  39% (30/76)   Writing objects:  40% (31/76)   Writing objects:  42% (32/76)   Writing objects:  43% (33/76)   Writing objects:  44% (34/76)   Writing objects:  46% (35/76)   Writing objects:  47% (36/76)   Writing objects:  48% (37/76)   Writing objects:  50% (38/76)   Writing objects:  51% (39/76)   Writing objects:  52% (40/76)   Writing objects:  53% (41/76)   Writing objects:  55% (42/76)   Writing objects:  56% (43/76)   Writing objects:  57% (44/76)   Writing objects:  59% (45/76)   Writing objects:  60% (46/76)   Writing objects:  61% (47/76)   Writing objects:  63% (48/76)   Writing objects:  64% (49/76)   Writing objects:  65% (50/76)   Writing objects:  67% (51/76)   Writing objects:  68% (52/76)   Writing objects:  69% (53/76)   Writing objects:  71% (54/76)   Writing objects:  72% (55/76)   Writing objects:  73% (56/76)   Writing objects:  75% (57/76)   Writing objects:  76% (58/76)   Writing objects:  77% (59/76)   Writing objects:  78% (60/76)   Writing objects:  80% (61/76)   Writing objects:  81% (62/76)   Writing objects:  82% (63/76)   Writing objects:  84% (64/76)   Writing objects:  85% (65/76)   Writing objects:  86% (66/76)   Writing objects:  88% (67/76)   Writing objects:  89% (68/76)   Writing objects:  90% (69/76)   Writing objects:  92% (70/76)   Writing objects:  93% (71/76)   Writing objects:  96% (73/76)   Writing objects:  98% (75/76)   Writing objects: 100% (76/76)   Writing objects: 100% (76/76), done.
-Total 76 (delta 29), reused 76 (delta 29)
-[K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ ckl[K[Klear
-[3J[H[2J]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ ^V[Ksudo apt-get update
-[sudo] password for dsun: 
-dsun is not in the sudoers file.  This incident will be reported.
-]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ sudo apr[Kt-get install r-base r-base-dev
-[sudo] password for dsun: 
-dsun is not in the sudoers file.  This incident will be reported.
-[K]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ gree -[K[K[K[K[K[Kfree -m
-              total        used        free      shared  buff/cache   available
-Mem:          64401         757       61030           0        2613       62931
-Swap:             0           0           0
-]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ greef[K[K[K[K[Kfree -mBCC0EE36
-R_PDFVIEWER=/usr/bin/xdg-open
-R_RD4PDF=times,inconsolata,hyper
-LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
-LD_LIBRARY_PATH=/usr/lib/R/lib::/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/default-java/lib/server
-RS_RPOSTBACK_PATH=/usr/lib/rstudio-server/bin/rpostback
-LESSCLOSE=/usr/bin/lesspipe %s %s
-R_SHARE_DIR=/usr/share/R/share
-LANG=C.UTF-8
-HISTCONTROL=ignoreboth
-DISPLAY=:0
-RSTUDIO_HTTP_REFERER=http://ec2-54-200-26-147.us-west-2.compute.amazonaws.com:8787/
-TAR=/bin/tar
-EDITOR=vi
-R_BROWSER=xdg-open
-R_DOC_DIR=/usr/share/R/doc
-R_SESSION_TMPDIR=/tmp/Rtmp2GzrJ9
-LN_S=ln -s
-RSTUDIO_SESSION_ID=12f4c00c
-R_LIBS_USER=~/R/x86_64-pc-linux-gnu-library/3.4
-R_INCLUDE_DIR=/usr/share/R/include
-USER=dsun
-PAGER=/usr/bin/pager
-PWD=/home/dsun/Baseline
-SSH_ASKPASS=rpostback-askpass
-HOME=/home/dsun
-SED=/bin/sed
-RSTUDIO_PANDOC=/usr/lib/rstudio-server/bin/pandoc
-R_PAPERSIZE=letter
-XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
-R_SYSTEM_ABI=linux,gcc,gxx,gfortran,?
-RSTUDIO=1
-R_ZIPCMD=/usr/bin/zip
-R_PAPERSIZE_USER=a4
-CLICOLOR_FORCE=1
-R_HOME=/usr/lib/R
-R_BZIPCMD=/bin/bzip2
-RSTUDIO_USER_IDENTITY=dsun
-RMARKDOWN_MATHJAX_PATH=/usr/lib/rstudio-server/resources/mathjax-26
-TERM=xterm-256color
-R_PRINTCMD=/usr/bin/lpr
-R_GZIPCMD=/bin/gzip -n
-RSTUDIO_TERM=B904A3BE
-RSTUDIO_WINUTILS=bin/winutils
-SHLVL=10
-PROMPT_COMMAND=echo -ne "\033]0;${PWD/#${HOME}/~}\007"
-R_PLATFORM=x86_64-pc-linux-gnu
-RSTUDIO_SESSION_STREAM=dsun-d
-R_LIBS_SITE=/usr/local/lib/R/site-library:/usr/lib/R/site-library:/usr/lib/R/library
-R_UNZIPCMD=/usr/bin/unzip
-LOGNAME=dsun
-GIT_ASKPASS=rpostback-askpass
-RSTUDIO_PROJ_NAME=Baseline
-RSTUDIO_CONSOLE_WIDTH=126
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home:bin/msys-ssh-1000-18:/snap/bin:/home:bin/msys-ssh-1000-18:/home:bin/msys-ssh-1000-18:/home:bin/msys-ssh-1000-18:/home:bin/msys-ssh-1000-18:/home:bin/msys-ssh-1000-18:/home:bin/msys-ssh-1000-18:/home:bin/msys-ssh-1000-18:/home:bin/msys-ssh-1000-18:/home:bin/msys-ssh-1000-18
-RSTUDIO_CONSOLE_COLOR=256
-R_TEXI2DVICMD=/usr/bin/texi2dvi
-MAKE=make
-LESSOPEN=| /usr/bin/lesspipe %s
-_=/usr/bin/env
-1F8F2B3A
 ]0;/home/dsun/Baseline]0;dsun@ip-10-20-1-161: ~/Baseline[01;32mdsun@ip-10-20-1-161[00m:[01;34m~/Baseline[00m$ ^C
 free -m
               total        used        free      shared  buff/cache   available
@@ -1088,4 +991,11 @@ NameError: name 'd' is not defined
 >>> 
 KeyboardInterrupt
 >>> 
-]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ 
+free
+              total        used        free      shared  buff/cache   available
+Mem:       65947156    23825368    26019060         992    16102728    41392540
+Swap:             0           0           0
+fe[Kree
+              total        used        free      shared  buff/cache   available
+Mem:       65947156    42744904     3897536         992    19304716    22473012
+Swap:             0           0           0

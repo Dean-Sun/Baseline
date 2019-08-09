@@ -6,8 +6,8 @@ source('code/plott.R')
 
 # start h2o session 
 h2o.init(nthreads=-1, max_mem_size="55G")
-train = h2o.importFile(path = 'data/group_d_to_i/train.csv')
-valid = h2o.importFile(path = 'data/group_d_to_i/valid.csv')
+train = h2o.importFile(path = 'data/group_c/train.csv')
+valid = h2o.importFile(path = 'data/group_c/valid.csv')
 
 # log the label
 train['TrueAnswer_log'] = log(train['TrueAnswer'])
@@ -99,31 +99,24 @@ plotPred(valid_dt, group = 'GroupI-3000', model = 'gbm', activity = FALSE)
 ##################################################################
 
 model_xgb <- h2o.xgboost(model_id="model_xgb", 
-                     training_frame=train, 
-                     validation_frame=valid,
-                     x = X, 
-                     y = y_true,
-                     ntrees = 250,
-                     max_depth = 7,
-                     learn_rate = 0.05,
-                     reg_alpha = 0.5,
-                     min_rows = 3,
-                     sample_rate = 0.8,
-                     col_sample_rate = 0.8,
-                     col_sample_rate_per_tree = 0.8,
-                     score_tree_interval = 5,
-                     stopping_rounds = 5,
-                     stopping_metric = 'MAE',
-                     stopping_tolerance = 0.001,
-                     verbose = TRUE)
+                         training_frame=train, 
+                         validation_frame=valid,
+                         x = X, 
+                         y = y_log,
+                         ntrees = 250,
+                         max_depth = 8,
+                         stopping_rounds = 5,
+                         stopping_metric = 'MAE',
+                         stopping_tolerance = 0.001,
+                         verbose = TRUE)
 # performance check 
 summary(model_xgb)
 
-valid['y_pred_xgb'] = h2o.predict(model_xgb, valid)
+valid['y_pred_xgb'] = exp(h2o.predict(model_xgb, valid))
 metrics(valid['y_pred_xgb'], valid[y_true])
 
 valid_dt$y_pred_xgb = as.data.table(valid$y_pred_xgb)
-plotPred(valid_dt, group = 'GroupD-47', model = 'xgb', activity = FALSE)
+plotPred(valid_dt, group = 'GroupC-3817', model = 'xgb', activity = FALSE)
 
 
 ##################################################################
@@ -253,24 +246,21 @@ metrics(valid['y_pred_ensemble'], valid[y_true])
 ###################### Save and Load ####################################
 #########################################################################
 # Save the model
-path <- h2o.saveModel(model_rf, path="models_server/group_d_to_i", force=TRUE)
+path <- h2o.saveModel(model_xgb, path="models_server/group_c", force=TRUE)
 
 model <- h2o.loadModel('models_server/group_d_to_i/model_rf')
 summary(model)
 
-
-
-valid = h2o.importFile(path = 'data/group_i/valid.csv')
-
-valid['y_pred_rf'] = h2o.predict(model, valid)
+valid['y_pred'] = h2o.predict(model, valid)
 #test_h2o['y_pred'] = h2o.predict(model, test_h2o)
 
-metrics(valid['y_pred_rf'], valid['TrueAnswer'])
+
+metrics(valid['y_pred'], valid['TrueAnswer'])
 #metrics(test_h2o['y_pred'], test_h2o['TrueAnswer'])
 
 
-valid_dt = as.data.table(valid)
-valid_dt_i = valid_dt
+
+
 
 
 

@@ -7,7 +7,7 @@ source('code/tools.R')
 source('code/plott.R')
 
 # start h2o session 
-h2o.init(nthreads=-1, max_mem_size="58G")
+h2o.init(nthreads=-1, max_mem_size="50G")
 train = h2o.importFile(path = 'data/csv_cut/data_train.csv')
 valid = h2o.importFile(path = 'data/csv_cut/data_val.csv')
 
@@ -54,10 +54,13 @@ model_rf_log <- h2o.randomForest(
 
 # performance check 
 summary(model_rf_log)
-performance(h2o.predict(model_rf_log, train), train[y_true], type = 'log')
-performance(h2o.predict(model_rf_log, valid), valid[y_true], type = 'log')
 
 
+valid['y_pred_rf'] = h2o.predict(model_xgb, valid)
+metrics(valid['y_pred_rf'], valid[y_true])
+
+valid_dt$y_pred_xgb = as.data.table(valid$y_pred_xgb)
+plotPred(valid_dt, group = 'Group-199', model = 'xgb', activity = FALSE)
 
 
 
@@ -210,18 +213,115 @@ model_xgb <- h2o.xgboost(model_id="model_xgb",
                          training_frame=train, 
                          validation_frame=valid,
                          x = X, 
-                         y = y_true,
-                         ntrees = 100,
-                         max_depth = 13,
-                         stopping_rounds = 3,
+                         y = y_log,
+                         ntrees = 500,
+                         max_depth = 8,
+                         col_sample_rate = 0.51,
+                         col_sample_rate_per_tree = 0.67,
+                         learn_rate = 0.04,
+                         min_rows = 128,
+                         reg_lambda = 0.1,
+                         reg_alpha = 0.2,
+                         sample_rate = 0.98,
+                         stopping_rounds = 5,
                          stopping_metric = 'MSE',
-                         stopping_tolerance = 0.01,
+                         stopping_tolerance = 0.0001,
                          verbose = TRUE)
 # performance check 
 summary(model_xgb)
 
-metrics(h2o.predict(model_xgb, train), train[y_true])
-valid['y_pred_xgb'] = h2o.predict(model_xgb, valid)
+
+valid['y_pred_xgb'] = exp(h2o.predict(model_xgb, valid))
+metrics(valid['y_pred_xgb'], valid[y_true])
+
+valid_dt$y_pred_xgb = as.data.table(valid$y_pred_xgb)
+plotPred(valid_dt, group = 'Group-199', model = 'xgb', activity = FALSE)
+
+
+
+
+
+################# Tuning the parameters #########################
+hyper_params = list(
+  ntrees = c(100,200,300,400),
+  max_depth = seq(5,15,1),
+  learn_rate = seq(0.01, 0.2, 0.01),
+  sample_rate = seq(0.2,1,0.01),
+  col_sample_rate = seq(0.2,1,0.01),
+  col_sample_rate_per_tree = seq(0.2,1,0.01),
+  min_rows = seq(0, 500, 50),
+  reg_lambda = seq(0,1,0.1),
+  reg_alpha = seq(0,1,0.1)
+)
+
+search_criteria = list(
+  strategy = "RandomDiscrete",
+  max_runtime_secs = 10800,
+  max_models = 100,
+  seed = 1234,
+  stopping_rounds = 3,
+  stopping_metric = "MSE",
+  stopping_tolerance = 0.001
+)
+
+grid_xgb <- h2o.grid(
+  hyper_params = hyper_params,
+  search_criteria = search_criteria,
+  algorithm = "xgboost",
+  x = X,
+  y = y_true,
+  training_frame = train,
+  nfolds = 3,
+  fold_assignment = 'Modulo',
+  max_runtime_secs = 5400,
+  stopping_rounds = 5, 
+  stopping_tolerance = 0.001, 
+  keep_cross_validation_predictions = TRUE,
+  stopping_metric = "MSE",
+  seed = 1234
+)
+
+
+
+ensemble <- h2o.stackedEnsemble(x = X,
+                                y = y_true,
+                                training_frame = train,
+                                model_id = "model_ensemble_xgb",
+                                base_models = grid_xgb@model_ids)
+
+summary(ensemble)
+
+
+valid['y_pred_ensemble'] = (h2o.predict(ensemble, valid))
+metrics(valid['y_pred_ensemble'], valid[y_true])
+
+##########################################
+
+
+model_xgb <- h2o.xgboost(model_id="model_xgb", 
+                         training_frame=train, 
+                         validation_frame=valid,
+                         x = X, 
+                         y = y_log,
+                         ntrees = 500,
+                         max_depth = 8,
+                         col_sample_rate = 0.51,
+                         col_sample_rate_per_tree = 0.67,
+                         learn_rate = 0.04,
+                         min_rows = 128,
+                         reg_lambda = 0.1,
+                         reg_alpha = 0.2,
+                         sample_rate = 0.98,
+                         stopping_rounds = 5,
+                         stopping_metric = 'MSE',
+                         stopping_tolerance = 0.0001,
+                         verbose = TRUE)
+# performance check 
+model_xgb = h2o.getModel(grid_xgb@model_ids[[1]])
+summary(model_xgb)
+
+
+valid['y_pred_xgb'] = (h2o.predict(model_xgb, valid))
 metrics(valid['y_pred_xgb'], valid[y_true])
 
 valid_dt$y_pred_xgb = as.data.table(valid$y_pred_xgb)
@@ -236,67 +336,9 @@ plotPred(valid_dt, group = 'Group-199', model = 'xgb', activity = FALSE)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Save the model
-path <- h2o.saveModel(model_rf_log, 
-                      path="models", force=TRUE)
+path <- h2o.saveModel(model_xgb, 
+                      path="models_server", force=TRUE)
 model <- h2o.loadModel('models_server/model_rf')
 summary(model)
 test_h2o = as.h2o(test%>%mutate_at(.vars = 'TIMESTAMP', .funs = as.character))
@@ -309,91 +351,6 @@ test_h2o['y_pred'] = h2o.predict(model, test_h2o)
 
 metrics(valid['y_pred'], valid['TrueAnswer'])
 metrics(test_h2o['y_pred'], test_h2o['TrueAnswer'])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

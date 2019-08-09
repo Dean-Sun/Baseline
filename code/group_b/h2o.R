@@ -6,15 +6,13 @@ source('code/plott.R')
 
 # start h2o session 
 h2o.init(nthreads=-1, max_mem_size="52G")
-train = h2o.importFile(path = 'data/group_a/train.csv')
-valid = h2o.importFile(path = 'data/group_a/valid.csv')
-test = h2o.importFile(path = 'data/group_a/test.csv')
+train = h2o.importFile(path = 'data/group_b/train.csv')
+valid = h2o.importFile(path = 'data/group_b/valid.csv')
 
 
 # log the label
 train['TrueAnswer_log'] = log(train['TrueAnswer'])
 valid['TrueAnswer_log'] = log(valid['TrueAnswer'])
-test['TrueAnswer_log'] = log(test['TrueAnswer'])
 
 # set X and y 
 y_true = 'TrueAnswer'
@@ -46,7 +44,7 @@ summary(model_rf_log)
 valid['y_pred_rf'] = exp(h2o.predict(model_rf_log, valid))
 metrics(valid['y_pred_rf'], valid[y_true])
 # plot
-valid_dt = as.data.table(valid)
+valid_dt_b = as.data.table(valid)
 valid_dt$y_pred_rf = as.data.table(valid$y_pred_rf)
 plotPred(valid_dt, group = 'GroupA-818', model = 'xgb', activity = FALSE)
 
@@ -90,16 +88,9 @@ imported_model <- h2o.import_mojo('/home/dsun/Baseline/models_server/mojo/test/m
 model_xgb <- h2o.xgboost(training_frame=train, 
                          validation_frame=valid,
                          x = X, 
-                         y = y_true,
-                         ntrees = 400,
-                         max_depth = 11,
-                         learn_rate = 0.07,
-                         col_sample_rate = 0.71,
-                         col_sample_rate_per_tree = 0.74,
-                         min_rows = 512,
-                         reg_alpha = 0.5,
-                         reg_lambda = 0.8,
-                         sample_rate = 0.22,
+                         y = y_log,
+                         ntrees = 300,
+                         max_depth = 10,
                          stopping_rounds = 5,
                          stopping_metric = 'MSE',
                          stopping_tolerance = 0.0001,
@@ -107,7 +98,7 @@ model_xgb <- h2o.xgboost(training_frame=train,
 # performance check 
 summary(model_xgb)
 
-valid['y_pred_xgb'] = h2o.predict(model_xgb, valid)
+valid['y_pred_xgb'] = exp(h2o.predict(model_xgb, valid))
 metrics(valid['y_pred_xgb'], valid[y_true])
 
 valid_dt$y_pred_xgb = as.data.table(valid$y_pred_xgb)
@@ -269,7 +260,7 @@ metrics(valid['y_pred_stack'], valid[y_true])
 ###################### Save and Load ####################################
 #########################################################################
 # Save the model
-path <- h2o.saveModel(model_gbm, path="models_server/group_a", force=TRUE)
+path <- h2o.saveModel(model_xgb, path="models_server/group_b", force=TRUE)
 
 model <- h2o.import_mojo('/home/dsun/Baseline/models_server/mojo/DeepLearning_grid_1_AutoML_20190528_031324_model_54.zip')
 summary(model)
@@ -279,7 +270,7 @@ pred = h2o.mojo_predict_csv(
   input_csv_path = 'data/group_a/valid.csv',
   mojo_zip_path = 'models_server/mojo/DeepLearning_grid_1_AutoML_20190528_031324_model_54.zip',
   verbose = T
-  )
+)
 
 
 
@@ -319,7 +310,7 @@ plotPred(valid_dt, group = 'GroupA-926', model = 'xgb', activity = FALSE)
 
 
 
-valid_dt_a = as.data.table(valid)
+
 
 
 

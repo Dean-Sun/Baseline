@@ -6,8 +6,8 @@ source('code/plott.R')
 
 # start h2o session 
 h2o.init(nthreads=-1, max_mem_size="55G")
-train = h2o.importFile(path = 'data/group_d_to_i/train.csv')
-valid = h2o.importFile(path = 'data/group_d_to_i/valid.csv')
+train = h2o.importFile(path = 'data/group_c_to_i/train.csv')
+valid = h2o.importFile(path = 'data/group_c_to_i/valid.csv')
 
 # log the label
 train['TrueAnswer_log'] = log(train['TrueAnswer'])
@@ -99,32 +99,72 @@ plotPred(valid_dt, group = 'GroupI-3000', model = 'gbm', activity = FALSE)
 ##################################################################
 
 model_xgb <- h2o.xgboost(model_id="model_xgb", 
-                     training_frame=train, 
-                     validation_frame=valid,
-                     x = X, 
-                     y = y_true,
-                     ntrees = 250,
-                     max_depth = 7,
-                     learn_rate = 0.05,
-                     reg_alpha = 0.5,
-                     min_rows = 3,
-                     sample_rate = 0.8,
-                     col_sample_rate = 0.8,
-                     col_sample_rate_per_tree = 0.8,
-                     score_tree_interval = 5,
-                     stopping_rounds = 5,
-                     stopping_metric = 'MAE',
-                     stopping_tolerance = 0.001,
-                     verbose = TRUE)
+                         training_frame=train, 
+                         validation_frame=valid,
+                         x = X, 
+                         y = y_log,
+                         ntrees = 300,
+                         max_depth = 10,
+                         stopping_rounds = 5,
+                         stopping_metric = 'MSE',
+                         stopping_tolerance = 0.001,
+                         verbose = TRUE)
 # performance check 
 summary(model_xgb)
 
-valid['y_pred_xgb'] = h2o.predict(model_xgb, valid)
+valid['y_pred_xgb'] = exp(h2o.predict(model_xgb, valid))
 metrics(valid['y_pred_xgb'], valid[y_true])
 
 valid_dt$y_pred_xgb = as.data.table(valid$y_pred_xgb)
 plotPred(valid_dt, group = 'GroupD-47', model = 'xgb', activity = FALSE)
 
+################# Tuning the parameters #########################
+hyper_params = list(
+  ntrees = c(100,200,300,400,500),
+  max_depth = seq(5,15,1),
+  learn_rate = seq(0.01, 0.2, 0.01),
+  sample_rate = seq(0.2,1,0.01),
+  col_sample_rate = seq(0.2,1,0.01),
+  col_sample_rate_per_tree = seq(0.2,1,0.01),
+  min_rows = 2^seq(0,log2(nrow(train))-1,1),
+  reg_lambda = seq(0,1,0.1),
+  reg_alpha = seq(0,1,0.1)
+)
+
+search_criteria = list(
+  strategy = "RandomDiscrete",
+  max_runtime_secs = 18000,
+  max_models = 50,
+  seed = 1234,
+  stopping_rounds = 3,
+  stopping_metric = "MSE",
+  stopping_tolerance = 0.0001
+)
+
+grid_xgb <- h2o.grid(
+  hyper_params = hyper_params,
+  search_criteria = search_criteria,
+  algorithm = "xgboost",
+  x = X,
+  y = y_log,
+  training_frame = train,
+  validation_frame = valid,
+  max_runtime_secs = 3600,
+  stopping_rounds = 5, 
+  stopping_tolerance = 0.0001, 
+  stopping_metric = "MSE",
+  score_tree_interval = 10,
+  seed = 1234
+)
+
+model_xgb = h2o.getModel('Grid_XGBoost_RTMP_sid_9c61_46_model_R_1565199110448_4_model_9')
+summary(model_xgb)
+
+valid['y_pred_xgb'] = exp(h2o.predict(model_xgb, valid))
+metrics(valid['y_pred_xgb'], valid[y_true])
+
+valid_dt$y_pred_xgb = as.data.table(valid$y_pred_xgb)
+plotPred(valid_dt, group = 'GroupD-47', model = 'xgb', activity = FALSE)
 
 ##################################################################
 ######################## Deep Learning ###########################
@@ -136,7 +176,7 @@ model_deep <- h2o.deeplearning(
   validation_frame=valid,
   x=X,
   y=y_true,
-  hidden=c(48,48,10),
+  hidden=c(16,16,16),
   variable_importances=T,
   epochs=1000000,                      ## hopefully converges earlier...
   score_validation_samples=10000,      ## sample the validation dataset (faster)
@@ -253,7 +293,7 @@ metrics(valid['y_pred_ensemble'], valid[y_true])
 ###################### Save and Load ####################################
 #########################################################################
 # Save the model
-path <- h2o.saveModel(model_rf, path="models_server/group_d_to_i", force=TRUE)
+path <- h2o.saveModel(model_xgb, path="models_server/group_c_to_i", force=TRUE)
 
 model <- h2o.loadModel('models_server/group_d_to_i/model_rf')
 summary(model)
