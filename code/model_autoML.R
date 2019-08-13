@@ -7,9 +7,9 @@ source('code/tools.R')
 source('code/plott.R')
 
 # start h2o session 
-h2o.init(nthreads=-1, max_mem_size="50G")
-train = h2o.importFile(path = 'data/group_d_to_i/train.csv')
-valid = h2o.importFile(path = 'data/group_d_to_i/valid.csv')
+h2o.init(nthreads=-1, max_mem_size="55G")
+train = h2o.importFile(path = 'data/csv_cut/data_train.csv')
+valid = h2o.importFile(path = 'data/csv_cut/data_val.csv')
 # set X and y 
 y_true <- "TrueAnswer"
 X = names(train)[c(3, 10:59, 63)]
@@ -20,7 +20,7 @@ auto = h2o.automl(
   training_frame=train, 
   x=X,
   y=y_true,
-  max_runtime_secs = 86400,
+  max_runtime_secs = 25200,
   leaderboard_frame = valid,
   max_models = 100,
   nfolds = 3,

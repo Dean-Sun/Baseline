@@ -245,7 +245,7 @@ plotPred(valid_dt, group = 'Group-199', model = 'xgb', activity = FALSE)
 hyper_params = list(
   ntrees = c(100,200,300,400),
   max_depth = seq(5,15,1),
-  learn_rate = seq(0.01, 0.2, 0.01),
+  learn_rate = seq(0.01, 0.3, 0.01),
   sample_rate = seq(0.2,1,0.01),
   col_sample_rate = seq(0.2,1,0.01),
   col_sample_rate_per_tree = seq(0.2,1,0.01),
@@ -256,8 +256,8 @@ hyper_params = list(
 
 search_criteria = list(
   strategy = "RandomDiscrete",
-  max_runtime_secs = 10800,
-  max_models = 100,
+  max_runtime_secs = 57600,
+  max_models = 200,
   seed = 1234,
   stopping_rounds = 3,
   stopping_metric = "MSE",

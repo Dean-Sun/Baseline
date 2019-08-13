@@ -100,8 +100,11 @@ metrics(valid_dt_i$y_pred_mike, valid_dt_i$TrueAnswer)
 
 model = h2o.loadModel('models_server/model_deep_1')
 
-valid_test = h2o.importFile(path = 'data/group_i/valid.csv')
-valid_test['pred'] = exp(h2o.predict(model_xgb, valid_test))
+model = auto@leader
+
+
+valid_test = h2o.importFile(path = 'data/group_e/valid.csv')
+valid_test['pred'] = h2o.predict(model, valid_test)
 metrics(valid_test['pred'], valid_test['TrueAnswer'])
 
 
