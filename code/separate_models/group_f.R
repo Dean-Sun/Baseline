@@ -6,10 +6,10 @@ source('code/plott.R')
 
 # start h2o session 
 h2o.init(nthreads=-1, max_mem_size="10G")
-train = h2o.importFile(path = 'data/separate_model/group_f.csv')
+train = h2o.importFile(path = 'data/group_f/train.csv')
+valid = h2o.importFile(path = 'data/group_f/valid.csv')
 
-valid = train[900000:dim(train)[1],]
-train = train[1:900000,]
+
 
 # log the label
 train['TrueAnswer_log'] = log(train['TrueAnswer'])
@@ -163,7 +163,7 @@ model_deep <- h2o.deeplearning(
   validation_frame = valid,
   x=X,
   y=y_true,
-  hidden=c(16,16,16),
+  hidden=c(64,64),
   variable_importances=T,
   epochs=1000000,                      ## hopefully converges earlier...
   score_validation_samples=10000,      ## sample the validation dataset (faster)
@@ -271,7 +271,7 @@ metrics(valid['y_pred_stack'], valid[y_true])
 ###################### Save and Load ####################################
 #########################################################################
 # Save the model
-path <- h2o.saveModel(model_gbm, path="models_server/group_a", force=TRUE)
+path <- h2o.saveModel(model_deep, path="models_server/separate_models/group_f", force=TRUE)
 
 model <- h2o.import_mojo('/home/dsun/Baseline/models_server/mojo/DeepLearning_grid_1_AutoML_20190528_031324_model_54.zip')
 summary(model)

@@ -98,17 +98,17 @@ metrics(valid_dt_i$y_pred_mike, valid_dt_i$TrueAnswer)
 
 
 
-model = h2o.loadModel('models_server/model_deep_1')
+model = h2o.loadModel('models_server/group_c/model_xgb')
 
-model = auto@leader
+#model = model_xgb
 
 
-valid_test = h2o.importFile(path = 'data/group_e/valid.csv')
-valid_test['pred'] = h2o.predict(model, valid_test)
+valid_test = h2o.importFile(path = 'data/group_c/valid.csv')
+valid_test['pred'] = exp(h2o.predict(model, valid_test))
 metrics(valid_test['pred'], valid_test['TrueAnswer'])
 
 
-
+h2o.saveModel(model, path="models_server/separate_models/group_a", force=TRUE)
 
 
 

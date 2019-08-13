@@ -6,8 +6,8 @@ source('code/plott.R')
 
 # start h2o session 
 h2o.init(nthreads=-1, max_mem_size="10G")
-train = h2o.importFile(path = 'data/group_a/train.csv')
-valid = h2o.importFile(path = 'data/group_a/valid.csv')
+train = h2o.importFile(path = 'data/group_c/train.csv')
+valid = h2o.importFile(path = 'data/group_c/valid.csv')
 
 # log the label
 train['TrueAnswer_log'] = log(train['TrueAnswer'])
@@ -104,7 +104,9 @@ model_xgb <- h2o.xgboost(training_frame=train,
 # performance check 
 summary(model_xgb)
 
-valid['y_pred_xgb'] = h2o.predict(model_xgb, valid)
+model = h2o.getModel(grid_xgb@model_ids[[1]])
+
+valid['y_pred_xgb'] = exp(h2o.predict(model, valid))
 metrics(valid['y_pred_xgb'], valid[y_true])
 
 valid_dt$y_pred_xgb = as.data.table(valid$y_pred_xgb)
@@ -113,25 +115,26 @@ plotPred(valid_dt, group = 'GroupA-813', model = 'xgb', activity = TRUE)
 
 ################# Tuning the parameters #########################
 hyper_params = list(
-  ntrees = c(100,200,300,400,500),
-  max_depth = seq(5,15,1),
+  ntrees = c(200,300,400),
+  max_depth = seq(8,13,1),
   learn_rate = seq(0.01, 0.2, 0.01),
   sample_rate = seq(0.2,1,0.01),
   col_sample_rate = seq(0.2,1,0.01),
   col_sample_rate_per_tree = seq(0.2,1,0.01),
-  min_rows = 2^seq(0,log2(nrow(train))-1,1),
+  min_rows = seq(0,500,50),
   reg_lambda = seq(0,1,0.1),
   reg_alpha = seq(0,1,0.1)
 )
 
+
 search_criteria = list(
   strategy = "RandomDiscrete",
-  max_runtime_secs = 57600,
-  max_models = 100,
+  max_runtime_secs = 3600,
+  max_models = 50,
   seed = 1234,
   stopping_rounds = 3,
   stopping_metric = "MSE",
-  stopping_tolerance = 0.0001
+  stopping_tolerance = 0.001
 )
 
 grid_xgb <- h2o.grid(
@@ -142,13 +145,14 @@ grid_xgb <- h2o.grid(
   y = y_log,
   training_frame = train,
   validation_frame = valid,
-  max_runtime_secs = 5400,
+  max_runtime_secs = 1800,
   stopping_rounds = 5, 
-  stopping_tolerance = 0.0001, 
+  stopping_tolerance = 0.001, 
   stopping_metric = "MSE",
   score_tree_interval = 10,
   seed = 1234
 )
+
 
 
 ##################################################################
@@ -161,7 +165,7 @@ model_deep <- h2o.deeplearning(
   validation_frame = valid,
   x=X,
   y=y_true,
-  hidden=c(32,32,32),
+  hidden=c(32,32),
   variable_importances=T,
   epochs=1000000,                      ## hopefully converges earlier...
   score_validation_samples=10000,      ## sample the validation dataset (faster)
@@ -269,7 +273,7 @@ metrics(valid['y_pred_stack'], valid[y_true])
 ###################### Save and Load ####################################
 #########################################################################
 # Save the model
-path <- h2o.saveModel(model_gbm, path="models_server/group_a", force=TRUE)
+path <- h2o.saveModel(model, path="models_server/separate_models/group_c", force=TRUE)
 
 model <- h2o.import_mojo('/home/dsun/Baseline/models_server/mojo/DeepLearning_grid_1_AutoML_20190528_031324_model_54.zip')
 summary(model)

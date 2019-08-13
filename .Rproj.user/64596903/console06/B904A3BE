@@ -999,3 +999,20 @@ fe[Kree
               total        used        free      shared  buff/cache   available
 Mem:       65947156    42744904     3897536         992    19304716    22473012
 Swap:             0           0           0
+[K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ free
+              total        used        free      shared  buff/cache   available
+Mem:       65947156    25249512    26655320         992    14042324    39968316
+Swap:             0           0           0
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ free
+              total        used        free      shared  buff/cache   available
+Mem:       65947156    25190128    26675796         992    14081232    40027684
+Swap:             0           0           0
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ free
+              total        used        free      shared  buff/cache   available
+Mem:       65947156    25190276    26675648         992    14081232    40027556
+Swap:             0           0           0
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ free
+              total        used        free      shared  buff/cache   available
+Mem:       65947156    25200876    26664604         992    14081676    40016952
+Swap:             0           0           0
+]0;/home/dsun]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ [K]0;dsun@ip-10-20-1-161: ~[01;32mdsun@ip-10-20-1-161[00m:[01;34m~[00m$ 

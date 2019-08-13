@@ -92,12 +92,12 @@ model_xgb <- h2o.xgboost(training_frame=train,
                          max_depth = 10,
                          stopping_rounds = 5,
                          stopping_metric = 'MSE',
-                         stopping_tolerance = 0.0001,
-                         verbose = TRUE)
+                         stopping_tolerance = 0.001,
+                         verbose = FALSE)
 # performance check 
 summary(model_xgb)
-
-valid['y_pred_xgb'] = exp(h2o.predict(model_xgb, valid))
+model = h2o.getModel(grid_xgb@model_ids[[1]])
+valid['y_pred_xgb'] = (h2o.predict(model, valid))
 metrics(valid['y_pred_xgb'], valid[y_true])
 
 valid_dt$y_pred_xgb = as.data.table(valid$y_pred_xgb)
@@ -112,7 +112,7 @@ hyper_params = list(
   sample_rate = seq(0.2,1,0.01),
   col_sample_rate = seq(0.2,1,0.01),
   col_sample_rate_per_tree = seq(0.2,1,0.01),
-  min_rows = 2^seq(0,log2(nrow(train))-1,1),
+  min_rows = seq(0,500,50),
   reg_lambda = seq(0,1,0.1),
   reg_alpha = seq(0,1,0.1)
 )
@@ -132,7 +132,7 @@ grid_xgb <- h2o.grid(
   search_criteria = search_criteria,
   algorithm = "xgboost",
   x = X,
-  y = y_log,
+  y = y_true,
   training_frame = train,
   validation_frame = valid,
   max_runtime_secs = 1800,
@@ -264,7 +264,7 @@ metrics(valid['y_pred_stack'], valid[y_true])
 ###################### Save and Load ####################################
 #########################################################################
 # Save the model
-path <- h2o.saveModel(model_xgb, path="models_server/group_b", force=TRUE)
+path <- h2o.saveModel(model, path="models_server/separate_models/group_b", force=TRUE)
 
 model <- h2o.import_mojo('/home/dsun/Baseline/models_server/mojo/DeepLearning_grid_1_AutoML_20190528_031324_model_54.zip')
 summary(model)
