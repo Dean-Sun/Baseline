@@ -67,7 +67,29 @@ plotPred = function(data, group = 'GroupA-1', model = 'baseline', activity = FAL
 
 
 
-
+plotALL = function(data, group = 'GroupA-1', model = c('xgb', 'xgb_log'), activity = FALSE){
+  pred = paste0('y_pred_', model)
+  data$TIMESTAMP = ymd_hms(data$TIMESTAMP)
+  
+  if (activity == TRUE){
+    data %>%
+      filter(id == group)%>%
+      select(TIMESTAMP, TrueAnswer, Activity, pred)%>%
+      as.data.table()%>%
+      dygraph(main = paste0('ID: ', group))%>%
+      dyRangeSelector()%>%
+      dyOptions(useDataTimezone = TRUE)
+  }else{
+    data %>%
+      filter(id == group)%>%
+      select(TIMESTAMP, TrueAnswer, pred)%>%
+      as.data.table()%>%
+      dygraph(main = paste0('ID: ', group))%>%
+      dyRangeSelector()%>%
+      dyOptions(useDataTimezone = TRUE)
+  }
+  
+}
 
 
 

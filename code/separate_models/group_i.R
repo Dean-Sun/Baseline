@@ -5,7 +5,7 @@ source('code/tools.R')
 source('code/plott.R')
 
 # start h2o session 
-h2o.init(nthreads=-1, max_mem_size="10G")
+h2o.init(nthreads=-1, max_mem_size="55G")
 train = h2o.importFile(path = 'data/group_i/train.csv')
 valid = h2o.importFile(path = 'data/group_i/valid.csv')
 
@@ -162,7 +162,7 @@ model_deep <- h2o.deeplearning(
   validation_frame = valid,
   x=X,
   y=y_true,
-  hidden=c(32,32,32),
+  hidden=c(64,64),
   variable_importances=T,
   epochs=1000000,                      ## hopefully converges earlier...
   score_validation_samples=10000,      ## sample the validation dataset (faster)

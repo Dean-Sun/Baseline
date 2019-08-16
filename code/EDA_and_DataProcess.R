@@ -120,10 +120,10 @@ valid['id'] = paste0(valid$CME_Group, '-', as.character(valid$FileGrp))
 write_csv(train, 'data/group_a/train.csv')
 write_csv(valid, 'data/group_a/valid.csv')
 
-
-test = read_fst('../Baseline_Data/GroupA_test_dat.fst', as.data.table = TRUE)
+######## test 10080 ################
+test = read_fst('../Baseline_Data/GroupI_test_dat.fst', as.data.table = TRUE, from=1, to=10080)
 test$id = paste0(test$CME_Group, '-', as.character(test$FileGrp))
-write_csv(test, 'data/group_a/test.csv')
+write_csv(test, 'data/group_i/test.csv')
 
 
 
@@ -185,125 +185,6 @@ data2%>%
   dygraph()%>%
   dyRangeSelector()%>%
   dyOptions(useDataTimezone = TRUE)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

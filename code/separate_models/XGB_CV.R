@@ -1,7 +1,7 @@
 
 hyper_params = list(
   ntrees = c(200,300,400),
-  max_depth = seq(8,13,1),
+  max_depth = seq(8,15,1),
   learn_rate = seq(0.01, 0.2, 0.01),
   sample_rate = seq(0.2,1,0.01),
   col_sample_rate = seq(0.2,1,0.01),
@@ -13,13 +13,23 @@ hyper_params = list(
 
 search_criteria = list(
   strategy = "RandomDiscrete",
-  max_runtime_secs = 4800,
+  max_runtime_secs = 3600,
   max_models = 50,
   seed = 1234,
   stopping_rounds = 3,
   stopping_metric = "MSE",
   stopping_tolerance = 0.001
 )
+
+train_a = h2o.importFile(path = 'data/group_a/train.csv')
+valid_a = h2o.importFile(path = 'data/group_a/valid.csv')
+
+train_b = h2o.importFile(path = 'data/group_b/train.csv')
+valid_b = h2o.importFile(path = 'data/group_b/valid.csv')
+
+train_c = h2o.importFile(path = 'data/group_c/train.csv')
+valid_c = h2o.importFile(path = 'data/group_c/valid.csv')
+
 
 train_d = h2o.importFile(path = 'data/group_d/train.csv')
 valid_d = h2o.importFile(path = 'data/group_d/valid.csv')
@@ -40,15 +50,109 @@ train_i = h2o.importFile(path = 'data/group_i/train.csv')
 valid_i = h2o.importFile(path = 'data/group_i/valid.csv')
 
 # log the label
-train_i['TrueAnswer_log'] = log(train_i['TrueAnswer'])
-valid_i['TrueAnswer_log'] = log(valid_i['TrueAnswer'])
+train_c['TrueAnswer_log'] = log(train_c['TrueAnswer'])
+valid_c['TrueAnswer_log'] = log(valid_c['TrueAnswer'])
 
 # set X and y 
 y_true = 'TrueAnswer'
 y_log = 'TrueAnswer_log'
-X = names(train_d)[c(3, 10:59, 63)]
+X = names(train_a)[c(3, 10:59, 63)]
 
+################# A #########################
+grid_xgb_a <- h2o.grid(
+  hyper_params = hyper_params,
+  search_criteria = search_criteria,
+  algorithm = "xgboost",
+  x = X,
+  y = y_true,
+  training_frame = train_a,
+  validation_frame = valid_a,
+  max_runtime_secs = 1800,
+  stopping_rounds = 5, 
+  stopping_tolerance = 0.001, 
+  stopping_metric = "MSE",
+  score_tree_interval = 10,
+  seed = 1234
+)
+grid_xgb_log_a <- h2o.grid(
+  hyper_params = hyper_params,
+  search_criteria = search_criteria,
+  algorithm = "xgboost",
+  x = X,
+  y = y_log,
+  training_frame = train_a,
+  validation_frame = valid_a,
+  max_runtime_secs = 1800,
+  stopping_rounds = 5, 
+  stopping_tolerance = 0.001, 
+  stopping_metric = "MSE",
+  score_tree_interval = 10,
+  seed = 1234
+)
 
+################# B #########################
+grid_xgb_b <- h2o.grid(
+  hyper_params = hyper_params,
+  search_criteria = search_criteria,
+  algorithm = "xgboost",
+  x = X,
+  y = y_true,
+  training_frame = train_b,
+  validation_frame = valid_b,
+  max_runtime_secs = 1800,
+  stopping_rounds = 5, 
+  stopping_tolerance = 0.001, 
+  stopping_metric = "MSE",
+  score_tree_interval = 10,
+  seed = 1234
+)
+grid_xgb_log_b <- h2o.grid(
+  hyper_params = hyper_params,
+  search_criteria = search_criteria,
+  algorithm = "xgboost",
+  x = X,
+  y = y_log,
+  training_frame = train_b,
+  validation_frame = valid_b,
+  max_runtime_secs = 1800,
+  stopping_rounds = 5, 
+  stopping_tolerance = 0.001, 
+  stopping_metric = "MSE",
+  score_tree_interval = 10,
+  seed = 1234
+)
+
+################# C #########################
+grid_xgb_c <- h2o.grid(
+  hyper_params = hyper_params,
+  search_criteria = search_criteria,
+  algorithm = "xgboost",
+  x = X,
+  y = y_true,
+  training_frame = train_c,
+  validation_frame = valid_c,
+  max_runtime_secs = 1800,
+  stopping_rounds = 5, 
+  stopping_tolerance = 0.001, 
+  stopping_metric = "MSE",
+  score_tree_interval = 10,
+  seed = 1234
+)
+grid_xgb_log_c <- h2o.grid(
+  hyper_params = hyper_params,
+  search_criteria = search_criteria,
+  algorithm = "xgboost",
+  x = X,
+  y = y_log,
+  training_frame = train_c,
+  validation_frame = valid_c,
+  max_runtime_secs = 1800,
+  stopping_rounds = 5, 
+  stopping_tolerance = 0.001, 
+  stopping_metric = "MSE",
+  score_tree_interval = 10,
+  seed = 1234
+)
 
 ################# D #########################
 grid_xgb_d <- h2o.grid(

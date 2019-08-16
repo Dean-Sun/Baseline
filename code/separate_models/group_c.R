@@ -5,7 +5,7 @@ source('code/tools.R')
 source('code/plott.R')
 
 # start h2o session 
-h2o.init(nthreads=-1, max_mem_size="10G")
+h2o.init(nthreads=-1, max_mem_size="55G")
 train = h2o.importFile(path = 'data/group_c/train.csv')
 valid = h2o.importFile(path = 'data/group_c/valid.csv')
 
