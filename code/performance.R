@@ -3,7 +3,7 @@
 mike_model = function(group = 'group_a', mojo = 'DeepLearning_grid_1_AutoML_20190528_031324_model_54.zip', which = 'valid'){
   group_path = paste0('data/', group, '/', which, '.csv')
   mojo_path = paste0('models_server/mojo/', group, '/', mojo)
-  pred = h2o.mojo_predict_csv(
+  pred = h2o.mojo_predict_csv_mike(
     input_csv_path = group_path,
     mojo_zip_path = mojo_path
   )
@@ -14,9 +14,9 @@ my_model = function(group = 'group_a', model= 'xgb', mojo = 'DeepLearning_grid_1
   group_path = paste0('data/', group, '/', which, '.csv')
   mojo_path = paste0('models_server/separate_models/mojo/', group, '/', model, '/', mojo)
   if (grepl('log', model)){
-    pred = exp(h2o.mojo_predict_csv(input_csv_path = group_path, mojo_zip_path = mojo_path))
+    pred = exp(h2o.mojo_predict_csv_mike(input_csv_path = group_path, mojo_zip_path = mojo_path))
   }else{
-    pred = h2o.mojo_predict_csv(input_csv_path = group_path, mojo_zip_path = mojo_path)
+    pred = h2o.mojo_predict_csv_mike(input_csv_path = group_path, mojo_zip_path = mojo_path)
   }
   return(pred)
 }
@@ -38,12 +38,12 @@ valid_dt_i = as.data.table(valid)
 ###########################################################
 ################## A ############################
 # from 800
-metrics(valid_dt_a$y_pred_xgb, valid_dt_a$TrueAnswer)
+metrics(valid_dt_a$y_pred_xgb_log, valid_dt_a$TrueAnswer)
 
 valid_dt_a$y_pred_mike = mike_model(group = 'group_a', mojo = 'DeepLearning_grid_1_AutoML_20190528_031324_model_54.zip')
 metrics(valid_dt_a$y_pred_mike, valid_dt_a$TrueAnswer)
 
-plotPred(valid_dt_a, group = 'GroupA-934', model = c('xgb_log', 'mike'), activity = FALSE)
+plotPred(valid_dt_a, group = 'GroupA-904', model = c('xgb_log', 'mike'), activity = FALSE)
 
 ################## B ############################
 # from 2960
@@ -90,7 +90,7 @@ metrics(valid_dt_f$y_pred_rf, valid_dt_f$TrueAnswer)
 valid_dt_f$y_pred_mike = mike_model(group = 'group_f', mojo = 'DeepLearning_grid_1_AutoML_20190528_164841_model_6.zip')
 metrics(valid_dt_f$y_pred_mike, valid_dt_f$TrueAnswer)
 
-plotPred(valid_dt_f, group = 'GroupF-6053', model = c('deep', 'mike', 'xgb'), activity = FALSE)
+plotPred(valid_dt_f, group = 'GroupF-6053', model = c('mike', 'xgb'), activity = FALSE)
 
 ################## G ############################
 # 5647 
@@ -155,38 +155,43 @@ model = h2o.download_mojo(model, path, get_genmodel_jar = TRUE)
 
 
 #################### Group A ##################
-a_xgb_time = c()
-for (i in 1:100){
+xgb_time_a = c()
+for (i in 1:5){
   start.time <- Sys.time()
-  a_xgb = my_model(group = 'group_a', model= 'xgb', mojo = 'Grid_XGBoost_RTMP_sid_9db4_17_model_R_1565802347713_1_model_21.zip')
+  xgb_a = my_model(group = 'group_a', model= 'xgb', mojo = 'Grid_XGBoost_RTMP_sid_9db4_17_model_R_1565802347713_1_model_21.zip', 
+                   which = 'week_20')
   end.time <- Sys.time()
   time.taken <- end.time - start.time
-  a_xgb_time[i] = time.taken
+  xgb_time_a[i] = time.taken
+  print(i)
 }
-mean(a_xgb_time)
+mean(xgb_time_a)
 
 
-a_xgb_log_time = c()
-for (i in 1:100){
+xgb_log_time_a = c()
+for (i in 1:5){
   start.time <- Sys.time()
-  a_xgb_log =my_model(group = 'group_a', model= 'xgb_log', mojo = 'Grid_XGBoost_RTMP_sid_9db4_17_model_R_1565802347713_2_model_13.zip')
+  xgb_log_a =my_model(group = 'group_a', model= 'xgb_log', mojo = 'Grid_XGBoost_RTMP_sid_9db4_17_model_R_1565802347713_2_model_13.zip',
+                      which = 'week_20')
   end.time <- Sys.time()
   time.taken <- end.time - start.time
-  a_xgb_log_time[i] = time.taken
+  xgb_log_time_a[i] = time.taken
+  print(i)
 }
-mean(a_xgb_log_time)
+mean(xgb_log_time_a)
 
 
-a_deep_time = c()
-for (i in 1:100){
+deep_time_a = c()
+for (i in 1:5){
   start.time <- Sys.time()
-  a_deep =my_model(group = 'group_a', model= 'deep', mojo = 'model_deep.zip')
+  deep_a =my_model(group = 'group_a', model= 'deep', mojo = 'model_deep.zip', which = 'week_20')
   end.time <- Sys.time()
   time.taken <- end.time - start.time
-  a_deep_time[i] = time.taken
+  deep_time_a[i] = time.taken
+  print(i)
 }
 
-mean(a_deep_time)
+mean(deep_time_a)
 
 
 a_mike_pred = mike_model(group = 'group_a', mojo = 'DeepLearning_grid_1_AutoML_20190528_031324_model_54.zip')
@@ -201,38 +206,43 @@ metrics(a_mike_pred$predict, test$TrueAnswer)
 
 
 #################### Group G ##################
-g_xgb_time = c()
-for (i in 1:100){
+xgb_time_g = c()
+for (i in 1:5){
   start.time <- Sys.time()
-  g_xgb = my_model(group = 'group_g', model= 'xgb', mojo = 'Grid_XGBoost_RTMP_sid_92bb_60_model_R_1565729418965_13_model_5.zip')
+  xgb_g = my_model(group = 'group_g', model= 'xgb', mojo = 'Grid_XGBoost_RTMP_sid_92bb_60_model_R_1565729418965_13_model_5.zip',
+                   which = 'week_20')
   end.time <- Sys.time()
   time.taken <- end.time - start.time
-  g_xgb_time[i] = time.taken
+  xgb_time_g[i] = time.taken
+  print(i)
 }
-mean(g_xgb_time)
+mean(xgb_time_g)
 
 
-g_xgb_log_time = c()
-for (i in 1:100){
+xgb_log_time_g = c()
+for (i in 1:5){
   start.time <- Sys.time()
-  g_xgb_log =my_model(group = 'group_g', model= 'xgb_log', mojo = 'Grid_XGBoost_RTMP_sid_92bb_60_model_R_1565729418965_14_model_5.zip')
+  xgb_log_g =my_model(group = 'group_g', model= 'xgb_log', mojo = 'Grid_XGBoost_RTMP_sid_92bb_60_model_R_1565729418965_14_model_5.zip',
+                      which = 'week_20')
   end.time <- Sys.time()
   time.taken <- end.time - start.time
-  g_xgb_log_time[i] = time.taken
+  xgb_log_time_g[i] = time.taken
+  print(i)
 }
-mean(g_xgb_log_time)
+mean(xgb_log_time_g)
 
 
-g_deep_time = c()
-for (i in 1:100){
+deep_time_g= c()
+for (i in 1:5){
   start.time <- Sys.time()
-  g_deep =my_model(group = 'group_g', model= 'deep', mojo = 'model_deep.zip')
+  deep_g =my_model(group = 'group_g', model= 'deep', mojo = 'model_deep.zip' , which = 'week_20')
   end.time <- Sys.time()
   time.taken <- end.time - start.time
-  g_deep_time[i] = time.taken
+  deep_time_g[i] = time.taken
+  print(i)
 }
 
-mean(g_deep_time)
+mean(deep_time_g)
 
 
 g_mike_pred = mike_model(group = 'group_g', mojo = 'DeepLearning_1_AutoML_20190528_193315.zip')
@@ -245,29 +255,31 @@ metrics(a_xgb_log$predict, test$TrueAnswer)
 
 
 #################### Group I ##################
-i_xgb_time = c()
-for (i in 1:100){
+xgb_time_i = c()
+for (i in 1:5){
   start.time <- Sys.time()
-  i_xgb = my_model(group = 'group_i', model= 'xgb', mojo = 'Grid_XGBoost_RTMP_sid_92bb_64_model_R_1565729418965_17_model_6.zip')
+  xgb_i = my_model(group = 'group_i', model= 'xgb', mojo = 'Grid_XGBoost_RTMP_sid_92bb_64_model_R_1565729418965_17_model_6.zip',
+                   which = 'week_20')
   end.time <- Sys.time()
   time.taken <- end.time - start.time
-  i_xgb_time[i] = time.taken
+  xgb_time_i[i] = time.taken
 }
-mean(i_xgb_time)
+mean(xgb_time_i)
 
 
 
 
-i_deep_time = c()
-for (i in 1:100){
+deep_time_i = c()
+for (i in 1:5){
   start.time <- Sys.time()
-  i_deep =my_model(group = 'group_i', model= 'deep', mojo = 'model_deep.zip')
+  deep_i =my_model(group = 'group_i', model= 'deep', mojo = 'model_deep.zip',
+                   which = 'week_20')
   end.time <- Sys.time()
   time.taken <- end.time - start.time
-  i_deep_time[i] = time.taken
+  deep_time_i[i] = time.taken
 }
 
-mean(i_deep_time)
+mean(deep_time_i)
 
 
 i_mike_pred = mike_model(group = 'group_i', mojo = 'DeepLearning_grid_1_AutoML_20190528_234542_model_18.zip')
@@ -281,33 +293,34 @@ metrics(i_xgb$predict, test$TrueAnswer)
 
 #################### Other ##################
 xgb_time = c()
-for (i in 1:100){
+for (i in 1:5){
   start.time <- Sys.time()
-  xgb = my_model(group = 'group_b', model= 'xgb', mojo = 'Grid_XGBoost_RTMP_sid_9db4_19_model_R_1565802347713_3_model_6.zip')
+  xgb = my_model(group = 'group_i', model= 'xgb', mojo = 'Grid_XGBoost_RTMP_sid_92bb_64_model_R_1565729418965_17_model_6.zip',
+                 which = 'week_50')
   end.time <- Sys.time()
-  time.taken <- end.time - start.time
+  time.taken <- difftime(end.time, start.time, units = 'secs')
   xgb_time[i] = time.taken
+  print(i)
 }
 mean(xgb_time)
 
-
-
-
 deep_time = c()
-for (i in 1:100){
+for (i in 1:5){
   start.time <- Sys.time()
-  deep =my_model(group = 'group_b', model= 'deep', mojo = 'model_deep.zip')
+  deep =my_model(group = 'group_i', model= 'deep', mojo = 'model_deep.zip', which = 'week_50')
   end.time <- Sys.time()
-  time.taken <- end.time - start.time  
+  time.taken <- difftime(end.time, start.time, units = 'secs')
   deep_time[i] = time.taken
+  print(i)
 }
 
 mean(deep_time)
 
 
-mike_pred = mike_model(group = 'group_b', mojo = 'DeepLearning_1_AutoML_20190528_055538.zip')
 
-test = read_csv('data/group_b/test.csv')
-metrics(a_deep$predict, test$TrueAnswer)
+
+
+
+
 
 

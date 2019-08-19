@@ -125,6 +125,16 @@ test = read_fst('../Baseline_Data/GroupI_test_dat.fst', as.data.table = TRUE, fr
 test$id = paste0(test$CME_Group, '-', as.character(test$FileGrp))
 write_csv(test, 'data/group_i/test.csv')
 
+###### 20_weeks #############################
+week_20 = read_fst('../Baseline_Data/GroupI_test_dat.fst', as.data.table = TRUE, from=1, to=201600)
+week_20$id = paste0(week_20$CME_Group, '-', as.character(week_20$FileGrp))
+write_csv(week_20, 'data/group_i/week_20.csv')
+
+
+###### 50_weeks #############################
+week_50 = read_fst('../Baseline_Data/GroupI_test_dat.fst', as.data.table = TRUE, from=1, to=504000)
+week_50$id = paste0(week_50$CME_Group, '-', as.character(week_50$FileGrp))
+write_csv(week_50, 'data/group_i/week_50.csv')
 
 
 ####### Combine group C-I 
