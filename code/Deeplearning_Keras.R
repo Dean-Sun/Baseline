@@ -67,6 +67,7 @@ model <- keras_model_sequential() %>%
   layer_dense(units = 16, activation = "relu") %>%
   layer_dense(units = 1)
 
+# can change the loss function to MAPE
 model %>% compile(
   loss = "mse",
   optimizer = optimizer_rmsprop(),
@@ -76,6 +77,7 @@ model %>% compile(
 model%>%summary()
 
 
+# can add weight to use weighted least square
 model %>% fit(
   train_X,
   train$TrueAnswer,
