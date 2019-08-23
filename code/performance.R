@@ -36,7 +36,7 @@ valid_dt_i = as.data.table(valid)
 
 
 ###########################################################
-################## A ############################
+################## A ######################################
 # from 800
 metrics(valid_dt_a$y_pred_xgb_log, valid_dt_a$TrueAnswer)
 
@@ -293,7 +293,7 @@ metrics(i_xgb$predict, test$TrueAnswer)
 
 #################### Other ##################
 xgb_time = c()
-for (i in 1:5){
+for (i in 1:1){
   start.time <- Sys.time()
   xgb = my_model(group = 'group_i', model= 'xgb', mojo = 'Grid_XGBoost_RTMP_sid_92bb_64_model_R_1565729418965_17_model_6.zip',
                  which = 'week_50')
@@ -305,7 +305,7 @@ for (i in 1:5){
 mean(xgb_time)
 
 deep_time = c()
-for (i in 1:5){
+for (i in 1:1){
   start.time <- Sys.time()
   deep =my_model(group = 'group_i', model= 'deep', mojo = 'model_deep.zip', which = 'week_50')
   end.time <- Sys.time()

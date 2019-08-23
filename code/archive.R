@@ -43,9 +43,6 @@ plotPred = function(data, group = 'GroupA', model = 'baseline', samples = 1000){
   
 }
 
-
-
-
 ############# performence check ##################
 
 # performance check 

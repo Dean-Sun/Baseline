@@ -136,7 +136,9 @@ week_50 = read_fst('../Baseline_Data/GroupI_test_dat.fst', as.data.table = TRUE,
 week_50$id = paste0(week_50$CME_Group, '-', as.character(week_50$FileGrp))
 write_csv(week_50, 'data/group_i/week_50.csv')
 
-
+I = read_fst('../Baseline_Data/GroupI_test_dat.fst', as.data.table = TRUE)
+I$id = paste0(I$CME_Group, '-', as.character(I$FileGrp))
+write_csv(I, 'data/group_i/I.csv')
 ####### Combine group C-I 
 
 train_files = list.files("../Baseline_Data", pattern="train", recursive = TRUE, full.names = TRUE)[3:9]
